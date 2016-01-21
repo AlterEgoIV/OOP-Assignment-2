@@ -52,29 +52,23 @@ class Ship
     // forward coordinates are multiplied by speed to get ship velocity
     forward.mult(speed);
     
-    if(keyPressed)
+    if(keys[UP])
     {
-      if(key == CODED)
-      {
-        if(keyCode == UP)
-        {
-          // forward vector is added to pos vector to get our updated position
-          pos.add(forward);
-        }
-        
-        if(keyCode == LEFT)
-        {
-          // Rotates ship to the left
-          theta -= .1f;
-        }
-        
-        if(keyCode == RIGHT)
-        {
-          // Rotates ship to the right
-          theta += .1f;
-        }
-      }
+      // forward vector is added to pos vector to get our updated position
+      pos.add(forward);
     }
+        
+    if(keys[LEFT])
+    {
+      // Rotates ship to the left
+      theta -= .1f;
+    }
+        
+    if(keys[RIGHT])
+    {
+      // Rotates ship to the right
+      theta += .1f;
+    } 
   }
   
   void render()

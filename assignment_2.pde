@@ -1,4 +1,5 @@
 Ship ship;
+boolean[] keys = new boolean[512];
 
 void setup()
 {
@@ -13,4 +14,14 @@ void draw()
   
   ship.update();
   ship.render();
+}
+
+void keyPressed()
+{
+  keys[keyCode] = true;
+}
+
+void keyReleased()
+{
+  keys[keyCode] = false;
 }
