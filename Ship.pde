@@ -15,7 +15,7 @@ class Ship
     // Starts middle left of screen
     pos = new PVector(width / 10, height / 2);
     forward = new PVector(1, 0); // Initial forward movement is to the right
-    theta = 90.0f;
+    theta = 0.0f;
     speed = 5.0f;
     health = 10.0f;
     ammo = 10.0f;
@@ -40,19 +40,14 @@ class Ship
           pos.y--;
         }
         
-        if(keyCode == DOWN)
-        {
-          pos.y++;
-        }
-        
         if(keyCode == LEFT)
         {
-          pos.x--;
+          theta -= .1f;
         }
         
         if(keyCode == RIGHT)
         {
-          pos.x++;
+          theta += .1f;
         }
       }
     }
@@ -60,10 +55,14 @@ class Ship
   
   void render()
   {
+    pushMatrix();
     stroke(c);
-    line(pos.x - halfW, pos.y - halfW, pos.x + halfW, pos.y); // Outside Left
-    line(pos.x - halfW, pos.y + halfW, pos.x + halfW, pos.y); // Outside Right
-    line(pos.x - halfW, pos.y - halfW, pos.x, pos.y); // Inside Left
-    line(pos.x - halfW, pos.y + halfW, pos.x, pos.y); // Inside Right
+    translate(pos.x, pos.y);
+    rotate(theta);
+    line(-halfW, -halfW, halfW, 0); // Outside Left
+    line(-halfW, halfW, halfW, 0); // Outside Right
+    line(-halfW, -halfW, 0, 0); // Inside Left
+    line(-halfW, halfW, 0, 0); // Inside Right
+    popMatrix();
   }
 }
