@@ -27,4 +27,27 @@ abstract class GameObject
   // Abstract functions
   abstract void update();
   abstract void render();
+  
+  void wrapAround()
+  {
+    if(pos.x > width)
+    {
+      pos.x = 0;
+    }
+      
+    if(pos.x < 0)
+    {
+      pos.x = width;
+    }
+      
+    if(pos.y > height)
+    {
+      pos.y = 0;
+    }
+      
+    if(pos.y < 0)
+    {
+      pos.y = height;
+    }
+  }
 }

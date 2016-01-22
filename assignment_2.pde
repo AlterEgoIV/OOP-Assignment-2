@@ -1,6 +1,6 @@
 GameObject ship;
 GameObject enemy;
-ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 boolean[] keys = new boolean[512];
 
 void setup()
@@ -8,24 +8,23 @@ void setup()
   size(800, 600);
   
   ship = new Ship();
+  gameObjects.add(ship);
   enemy = new EnemyShip();
+  gameObjects.add(enemy);
 }
 
 void draw()
 {
   background(0);
   
-  ship.update();
-  ship.render();
-  
-  enemy.update();
-  enemy.render();
-  
-  for(Bullet b : bullets)
+  for(int i = gameObjects.size() - 1; i >= 0; i --)
   {
-    b.update();
-    b.render();
+    GameObject go = gameObjects.get(i);
+    go.update();
+    go.render();
   }
+  
+  checkCollisions();
 }
 
 void keyPressed()
@@ -36,4 +35,50 @@ void keyPressed()
 void keyReleased()
 {
   keys[keyCode] = false;
+}
+
+void checkCollisions()
+{
+  shipCollisions();
+}
+
+void shipCollisions()
+{
+  // Go through all objects
+  for(int i = gameObjects.size() - 1; i >= 0; i--)
+  {
+    // Instantiate object 
+    GameObject obj1 = gameObjects.get(i);
+    
+    // If object is a ship
+    if(obj1 instanceof Ship)
+    {
+      // Check all other objects
+      for(int j = gameObjects.size() - 1; j >= 0; j--)
+      {
+        // Instantiate another object
+        GameObject obj2 = gameObjects.get(j);
+        
+        // If any other objects are an enemy ship
+        if(obj2 instanceof EnemyShip) // Check the type of an object
+        {
+          // Bounding circle collisions
+          if(obj1.pos.dist(obj2.pos) < obj1.halfW + obj2.halfW)
+          {
+            // gameObjects.remove(obj2);
+            
+            if(obj2.pos.x > obj1.pos.x)
+            {
+              obj2.pos.x = obj1.pos.x + obj2.w;
+            }
+            
+            if(obj2.pos.x < obj1.pos.x)
+            {
+              obj2.pos.x = obj1.pos.x - obj2.w;
+            }
+          }
+        }
+      }
+    }
+  } 
 }

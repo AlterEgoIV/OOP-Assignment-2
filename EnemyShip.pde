@@ -6,7 +6,7 @@ class EnemyShip extends GameObject
     pos = new PVector(width - (width / 10), height / 2);
     forward = new PVector(-1, 0); // Initial forward movement is to the left
     theta = PI;
-    speed = 4.0f;
+    speed = 2.0f;
     health = 10.0f;
     ammo = 10.0f;
     w = 30.0f;
@@ -17,6 +17,23 @@ class EnemyShip extends GameObject
   }
   
   void update()
+  {
+    moveTowardsPlayer();
+    dodgeBullets();
+  }
+  
+  void moveTowardsPlayer()
+  {
+    forward.x = ship.pos.x - pos.x;
+    forward.y = ship.pos.y - pos.y;
+    forward.normalize();
+    forward.mult(speed);
+    pos.add(forward);
+    
+    wrapAround();
+  }
+  
+  void dodgeBullets()
   {
     
   }

@@ -49,6 +49,8 @@ class Ship extends GameObject
     {
       // forward vector is added to pos vector to get our updated position
       pos.add(forward);
+      
+      wrapAround();
     }
         
     if(keys[LEFT])
@@ -70,7 +72,7 @@ class Ship extends GameObject
     {
       Bullet bullet = new Bullet();
       
-      bullets.add(bullet);
+      gameObjects.add(bullet);
       
       elapsed = millis();
     }
