@@ -1,15 +1,5 @@
-class Ship
+class Ship extends GameObject
 {
-  PVector pos;
-  PVector forward;
-  float theta;
-  float speed;
-  float health;
-  float ammo;
-  float w;
-  float halfW;
-  color c;
-  
   Ship()
   {
     // Starts middle left of screen
@@ -69,6 +59,14 @@ class Ship
       // Rotates ship to the right
       theta += .1f;
     } 
+  }
+  
+  void shoot()
+  {
+    if(keys[' '])
+    {
+      
+    }
   }
   
   void render()
