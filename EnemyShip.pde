@@ -3,8 +3,9 @@ class EnemyShip extends GameObject
   EnemyShip()
   {
     // Starts middle right of screen
-    pos = new PVector(width - (width / 10), height / 2);
+    pos = new PVector(width - (width / 10), 50);
     forward = new PVector(-1, 0); // Initial forward movement is to the left
+    distance = new PVector(0, 0);
     theta = PI;
     speed = 2.0f;
     health = 10.0f;
@@ -18,14 +19,47 @@ class EnemyShip extends GameObject
   
   void update()
   {
+    // calculateDistance();
+
     moveTowardsPlayer();
     dodgeBullets();
   }
   
+  void calculateDistance()
+  {
+    if(pos.x > ship.pos.x)
+    {
+      distance.x = pos.x - ship.pos.x;
+    }
+    else if(pos.x < ship.pos.x)
+    {
+      distance.x = ship.pos.x - pos.x;
+    }
+    else
+    {
+      distance.x = 0;
+    }
+    
+    if(pos.y > ship.pos.y)
+    {
+      distance.y = pos.y - ship.pos.y;
+    }
+    else if(pos.y < ship.pos.y)
+    {
+      distance.y = ship.pos.y - pos.y;
+    }
+    else
+    {
+      distance.y = 0;
+    }
+  }
+  
   void moveTowardsPlayer()
   {
-    forward.x = ship.pos.x - pos.x;
-    forward.y = ship.pos.y - pos.y;
+    // line(pos.x, pos.y, ship.pos.x, ship.pos.y);
+    theta = atan2(ship.pos.y - pos.y, ship.pos.x - pos.x);
+    forward.x = cos(theta);
+    forward.y = sin(theta);
     forward.normalize();
     forward.mult(speed);
     pos.add(forward);
