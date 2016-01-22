@@ -1,4 +1,5 @@
 GameObject ship;
+GameObject enemy;
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 boolean[] keys = new boolean[512];
 
@@ -7,6 +8,7 @@ void setup()
   size(800, 600);
   
   ship = new Ship();
+  enemy = new EnemyShip();
 }
 
 void draw()
@@ -15,6 +17,9 @@ void draw()
   
   ship.update();
   ship.render();
+  
+  enemy.update();
+  enemy.render();
   
   for(Bullet b : bullets)
   {

@@ -1,8 +1,5 @@
 class Ship extends GameObject
 {
-  int elapsed;
-  int second;
-  
   Ship()
   {
     // Starts middle left of screen

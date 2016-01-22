@@ -9,6 +9,8 @@ abstract class GameObject
   float w;
   float halfW;
   color c;
+  int elapsed;
+  int second;
   
   // Generic default values
   GameObject()
