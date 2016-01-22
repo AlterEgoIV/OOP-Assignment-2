@@ -17,6 +17,7 @@ class Ship extends GameObject
   void update()
   {
     move();
+    shoot();
   }
   
   void move()
@@ -65,7 +66,9 @@ class Ship extends GameObject
   {
     if(keys[' '])
     {
+      Bullet bullet = new Bullet();
       
+      bullets.add(bullet);
     }
   }
   

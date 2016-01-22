@@ -1,4 +1,5 @@
-Ship ship;
+GameObject ship;
+ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 boolean[] keys = new boolean[512];
 
 void setup()
@@ -14,6 +15,12 @@ void draw()
   
   ship.update();
   ship.render();
+  
+  for(Bullet b : bullets)
+  {
+    b.update();
+    b.render();
+  }
 }
 
 void keyPressed()
