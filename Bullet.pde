@@ -5,11 +5,12 @@ class Bullet extends GameObject
     pos = new PVector(ship.pos.x, ship.pos.y);
     forward = new PVector(ship.forward.x, ship.forward.y);
     theta = ship.theta;
+    speed = ship.speed;
   }
   
   void update()
   {
-    pos.add(PVector.mult(forward, 6));
+    pos.add(PVector.mult(forward, 3));
   }
   
   void render()
@@ -17,7 +18,7 @@ class Bullet extends GameObject
     pushMatrix();
     translate(pos.x, pos.y);
     rotate(theta);
-    line(0, 0, 5, 0);
+    line(-5, 0, 5, 0);
     popMatrix();
   }
 }

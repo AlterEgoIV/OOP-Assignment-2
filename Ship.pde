@@ -1,5 +1,8 @@
 class Ship extends GameObject
 {
+  int elapsed;
+  int second;
+  
   Ship()
   {
     // Starts middle left of screen
@@ -12,6 +15,8 @@ class Ship extends GameObject
     w = 30.0f;
     halfW = w / 2.0f;
     c = color(255); // White
+    elapsed = 0;
+    second = 1000;
   }
   
   void update()
@@ -64,11 +69,13 @@ class Ship extends GameObject
   
   void shoot()
   {
-    if(keys[' '])
+    if(keys[' '] && millis() - elapsed > (second / 5))
     {
       Bullet bullet = new Bullet();
       
       bullets.add(bullet);
+      
+      elapsed = millis();
     }
   }
   
