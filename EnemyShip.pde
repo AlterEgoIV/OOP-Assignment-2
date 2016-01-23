@@ -9,7 +9,9 @@ class EnemyShip extends GameObject
     theta = PI;
     speed = 2.0f;
     health = 10.0f;
+    maxHealth = 10.0f;
     ammo = 10.0f;
+    maxAmmo = 10.0f;
     w = 30.0f;
     halfW = w / 2.0f;
     c = color(255, 0, 0); // Red
@@ -83,5 +85,21 @@ class EnemyShip extends GameObject
     line(-halfW, -halfW, 0, 0); // Inside Left
     line(-halfW, halfW, 0, 0); // Inside Right
     popMatrix();
+    
+    healthBarWidth = map(health, 0, maxHealth, 0, width / 2);
+    ammoBarWidth = map(ammo, 0, maxAmmo, 0, width / 3);
+    
+    // Health Bar
+    stroke(255);
+    fill(0);
+    rect(width, 0, -(width / 2), height / 20);
+    fill(0, 200, 0);
+    rect(width, 0, -healthBarWidth, height / 20);
+    
+    // Ammo Bar
+    fill(0);
+    rect(width, height / 20, -(width / 3), height / 20);
+    fill(200, 0, 0);
+    rect(width, height / 20, -ammoBarWidth, height / 20);
   }
 }

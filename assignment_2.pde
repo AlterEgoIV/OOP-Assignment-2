@@ -19,9 +19,9 @@ void draw()
   
   for(int i = gameObjects.size() - 1; i >= 0; i --)
   {
-    GameObject go = gameObjects.get(i);
-    go.update();
-    go.render();
+    GameObject obj = gameObjects.get(i);
+    obj.update();
+    obj.render();
   }
   
   checkCollisions();

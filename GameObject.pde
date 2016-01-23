@@ -6,12 +6,16 @@ abstract class GameObject
   float theta;
   float speed;
   float health;
+  float maxHealth;
   float ammo;
+  float maxAmmo;
   float w;
   float halfW;
   color c;
   int elapsed;
   int second;
+  float healthBarWidth;
+  float ammoBarWidth;
   
   // Generic default values
   GameObject()
