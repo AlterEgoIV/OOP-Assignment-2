@@ -6,8 +6,12 @@ void setup()
 {
   size(800, 600);
   
-  pShip1 = new Ship(width / 20, height / 2, 30.0f, radians(0.0f), color(255), true);
-  pShip2 = new Ship(width - (width / 20), height / 2, 30.0f, radians(180.0f), color(255, 0, 0), false);
+  pShip1 = new Ship('W', 'A', 'D', 'S', width / 20, height / 2, 30.0f, 
+  radians(0.0f), color(255), true);
+  
+  pShip2 = new Ship('I', 'J', 'L', 'K', width - (width / 20), height / 2, 30.0f, 
+  radians(180.0f), color(255, 0, 0), false);
+  
   gameObjects.add(pShip1);
   gameObjects.add(pShip2);
 }

@@ -1,11 +1,20 @@
 class Ship extends GameObject
 { 
   boolean player1;
+  char up;
+  char left;
+  char right;
+  char fire;
   
-  Ship(float x, float y, float w, float t, color c, boolean p1)
+  Ship(char up, char left, char right, char fire, 
+       float x, float y, float w, float t, color c, boolean p1)
   {
     pos = new PVector(x, y);
     forward = new PVector(1, 0);
+    this.up = up;
+    this.left = left;
+    this.right = right;
+    this.fire = fire;
     this.w = w;
     halfW = this.w / 2.0f;
     theta = t;
@@ -47,7 +56,7 @@ class Ship extends GameObject
     // forward coordinates are multiplied by speed to get ship velocity
     forward.mult(speed);
     
-    if(keys[UP])
+    if(keys[up])
     {
       // forward vector is added to pos vector to get our updated position
       pos.add(forward);
@@ -55,13 +64,13 @@ class Ship extends GameObject
       wrapAround();
     }
         
-    if(keys[LEFT])
+    if(keys[left])
     {
       // Rotates ship to the left
       theta -= .1f;
     }
         
-    if(keys[RIGHT])
+    if(keys[right])
     {
       // Rotates ship to the right
       theta += .1f;
@@ -70,7 +79,7 @@ class Ship extends GameObject
   
   void shoot()
   {
-    if(keys[' '] && millis() - elapsed > (second / 5))
+    if(keys[fire] && millis() - elapsed > (second / 5))
     {
       Bullet bullet = new Bullet();
       

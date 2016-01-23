@@ -1,10 +1,10 @@
 class Bullet extends GameObject
 {
-  boolean hit;
+  boolean struck;
   
   Bullet()
   {
-    hit = false;  
+    struck = false;  
   }
   
   void update()
@@ -19,16 +19,19 @@ class Bullet extends GameObject
   
   void detectCollisions()
   {
-    for(int i = 0; i < gameObjects.size() - 1; i++)
+    if(!struck)
     {
-      GameObject obj = gameObjects.get(i);
-      
-      if(obj instanceof Ship)
+      for(int i = 0; i < gameObjects.size() - 1; i++)
       {
-        if(dist(pos.x, pos.y, obj.pos.x, obj.pos.y) < obj.halfW)
+        GameObject obj = gameObjects.get(i);
+        
+        if(obj instanceof Ship)
         {
-          obj.health -= 0.5;
-          hit = true;
+          if(dist(pos.x, pos.y, obj.pos.x, obj.pos.y) < obj.halfW)
+          {
+            obj.health--;
+            struck = true;
+          }
         }
       }
     }
@@ -36,7 +39,7 @@ class Bullet extends GameObject
   
   void render()
   {
-    if(hit == false)
+    if(!struck)
     {
       stroke(c);
       pushMatrix();
