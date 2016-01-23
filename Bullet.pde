@@ -4,18 +4,17 @@ class Bullet extends GameObject
   
   Bullet()
   {
-    pos = new PVector(ship.pos.x, ship.pos.y);
-    forward = new PVector(ship.forward.x, ship.forward.y);
-    theta = ship.theta;
-    speed = ship.speed;
-    hit = false;
+    hit = false;  
   }
   
   void update()
   {
-    pos.add(PVector.mult(forward, 3));
+    forward.x = cos(theta);
+    forward.y = sin(theta);
+    forward.mult(speed);
+    pos.add(forward);
     
-    detectCollisions();
+    //detectCollisions();
   }
   
   void detectCollisions()
@@ -24,7 +23,7 @@ class Bullet extends GameObject
     {
       GameObject obj = gameObjects.get(i);
       
-      if(obj instanceof EnemyShip)
+      if(obj instanceof Ship)
       {
         if(dist(pos.x, pos.y, obj.pos.x, obj.pos.y) < obj.halfW)
         {

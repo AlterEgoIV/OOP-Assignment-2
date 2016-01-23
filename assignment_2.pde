@@ -1,6 +1,4 @@
-// Two Player
-GameObject ship;
-GameObject enemy;
+GameObject pShip1, pShip2;
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 boolean[] keys = new boolean[512];
 
@@ -8,19 +6,20 @@ void setup()
 {
   size(800, 600);
   
-  ship = new Ship();
-  gameObjects.add(ship);
-  enemy = new EnemyShip();
-  gameObjects.add(enemy);
+  pShip1 = new Ship(width / 20, height / 2, 30.0f, radians(0.0f), color(255));
+  pShip2 = new Ship(width - (width / 20), height / 2, 30.0f, radians(180.0f), color(255, 0, 0));
+  gameObjects.add(pShip1);
+  gameObjects.add(pShip2);
 }
 
 void draw()
 {
   background(0);
   
-  for(int i = gameObjects.size() - 1; i >= 0; i --)
+  for(int i = gameObjects.size() - 1; i >= 0; i--)
   {
     GameObject obj = gameObjects.get(i);
+    
     obj.update();
     obj.render();
   }

@@ -1,21 +1,18 @@
 class Ship extends GameObject
-{
-  Ship()
+{ 
+  Ship(float x, float y, float w, float t, color c)
   {
-    // Starts middle left of screen
-    pos = new PVector(width / 10, height / 2);
-    forward = new PVector(1, 0); // Initial forward movement is to the right
-    theta = 0.0f;
-    speed = 4.0f;
+    pos = new PVector(x, y);
+    forward = new PVector(1, 0);
+    this.w = w;
+    halfW = this.w / 2.0f;
+    theta = t;
+    this.c = color(c);
     health = 10.0f;
     maxHealth = 10.0f;
     ammo = 10.0f;
     maxAmmo = 10.0f;
-    w = 30.0f;
-    halfW = w / 2.0f;
-    c = color(255); // White
-    elapsed = 0;
-    second = 1000;
+    speed = 4.0f;
   }
   
   void update()
@@ -74,22 +71,24 @@ class Ship extends GameObject
     {
       Bullet bullet = new Bullet();
       
+      bullet.pos.x = pos.x;
+      bullet.pos.y = pos.y;
+      bullet.pos.add(PVector.mult(forward, 3));
+      bullet.theta = theta;
+      bullet.speed = speed * 3;
+      bullet.c = c;
+      
       gameObjects.add(bullet);
       
       elapsed = millis();
-      
-      // health -= .1;
-      // ammo -= .2;
-      
-      // enemy.health -= .1;
-      // enemy.ammo -= .1;
     }
   }
   
   void render()
   {
-    pushMatrix();
     stroke(c);
+    
+    pushMatrix();
     translate(pos.x, pos.y);
     rotate(theta);
     line(-halfW, -halfW, halfW, 0); // Outside Left
@@ -98,20 +97,20 @@ class Ship extends GameObject
     line(-halfW, halfW, 0, 0); // Inside Right
     popMatrix();
     
-    healthBarWidth = map(health, 0, maxHealth, 0, width / 2);
-    ammoBarWidth = map(ammo, 0, maxAmmo, 0, width / 3);
+    healthBarWidth = map(health, 0, maxHealth, 0, maxHealthBarWidth);
+    ammoBarWidth = map(ammo, 0, maxAmmo, 0, maxAmmoBarWidth);
     
     // Health Bar
     fill(0);
-    rect(0, 0, width / 2, height / 20);
+    rect(0, 0, maxHealthBarWidth, barHeight);
     fill(0, 200, 0);
-    rect(0, 0, healthBarWidth, height / 20);
+    rect(0, 0, healthBarWidth, barHeight);
     
     // Ammo Bar
     fill(0);
-    rect(0, height / 20, width / 3, height / 20);
+    rect(0, barHeight, maxAmmoBarWidth, barHeight);
     fill(200, 0, 0);
-    rect(0, height / 20, ammoBarWidth, height / 20);
+    rect(0, barHeight, ammoBarWidth, barHeight);
   }
 }
 

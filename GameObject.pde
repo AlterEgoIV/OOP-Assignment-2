@@ -2,31 +2,43 @@ abstract class GameObject
 {
   PVector pos;
   PVector forward;
-  PVector distance;
+  float w;
+  float halfW;
   float theta;
-  float speed;
+  color c;
   float health;
   float maxHealth;
   float ammo;
   float maxAmmo;
-  float w;
-  float halfW;
-  color c;
+  float speed;
   int elapsed;
   int second;
   float healthBarWidth;
+  float maxHealthBarWidth;
   float ammoBarWidth;
+  float maxAmmoBarWidth;
+  float barHeight;
   
   // Generic default values
   GameObject()
   {
-    theta = 0.0f;
-    speed = 0.0f;
-    health = 0.0f;
-    ammo = 0.0f;
+    pos = new PVector(width / 2, height / 2);
+    forward = new PVector(1, 0);
     w = 0.0f;
     halfW = 0.0f;
-    c = color(255); // White
+    theta = 0.0f;
+    c = color(255);
+    health = 0.0f;
+    maxHealth = 0.0f;
+    ammo = 0.0f;
+    maxAmmo = 0.0f;
+    elapsed = 0;
+    second = 1000;
+    healthBarWidth = width / 2;
+    maxHealthBarWidth = width / 2;
+    ammoBarWidth = width / 3;
+    maxAmmoBarWidth = width / 3;
+    barHeight = height / 20;
   }
   
   // Abstract functions
