@@ -44,15 +44,31 @@ abstract class GameObject
     {
       pos.x = width;
     }
-      
-    if(pos.y > height)
+    
+    if(pos.x < width / 3 || pos.x > ((width / 3) * 2))
     {
-      pos.y = 0;
+      if(pos.y - halfW < height / 10)
+      {
+        pos.y = height;
+      }
+      
+      if(pos.y > height)
+      {
+        pos.y = halfW + (height / 10);
+      }
     }
-      
-    if(pos.y < 0)
+    
+    if(pos.x > width / 3 && pos.x < ((width / 3) * 2))
     {
-      pos.y = height;
+      if(pos.y - halfW < height / 20)
+      {
+        pos.y = height;
+      }
+      
+      if(pos.y > height)
+      {
+        pos.y = halfW + (height / 20);
+      }
     }
   }
 }

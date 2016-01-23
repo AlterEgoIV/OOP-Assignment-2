@@ -23,7 +23,7 @@ class EnemyShip extends GameObject
   {
     // calculateDistance();
 
-    moveTowardsPlayer();
+    //moveTowardsPlayer();
     dodgeBullets();
   }
   

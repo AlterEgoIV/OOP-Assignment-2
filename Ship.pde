@@ -114,3 +114,4 @@ class Ship extends GameObject
     rect(0, height / 20, ammoBarWidth, height / 20);
   }
 }
+
