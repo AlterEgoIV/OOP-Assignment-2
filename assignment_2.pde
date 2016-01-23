@@ -24,7 +24,7 @@ void draw()
     obj.render();
   }
   
-  checkCollisions();
+  // checkCollisions();
 }
 
 void keyPressed()
@@ -37,7 +37,7 @@ void keyReleased()
   keys[keyCode] = false;
 }
 
-void checkCollisions()
+/*void checkCollisions()
 {
   shipCollisions();
 }
@@ -81,4 +81,4 @@ void shipCollisions()
       }
     }
   } 
-}
+}*/

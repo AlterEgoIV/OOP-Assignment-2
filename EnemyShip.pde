@@ -3,7 +3,7 @@ class EnemyShip extends GameObject
   EnemyShip()
   {
     // Starts middle right of screen
-    pos = new PVector(width - (width / 10), 50);
+    pos = new PVector(width - (width / 10), height / 2);
     forward = new PVector(-1, 0); // Initial forward movement is to the left
     distance = new PVector(0, 0);
     theta = PI;
