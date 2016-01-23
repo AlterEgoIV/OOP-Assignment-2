@@ -23,7 +23,7 @@ class EnemyShip extends GameObject
   {
     // calculateDistance();
 
-    //moveTowardsPlayer();
+    moveTowardsPlayer();
     dodgeBullets();
   }
   
@@ -60,11 +60,11 @@ class EnemyShip extends GameObject
   {
     // line(pos.x, pos.y, ship.pos.x, ship.pos.y);
     theta = atan2(ship.pos.y - pos.y, ship.pos.x - pos.x);
-    forward.x = cos(theta);
-    forward.y = sin(theta);
-    forward.normalize();
-    forward.mult(speed);
-    pos.add(forward);
+    //forward.x = cos(theta);
+    //forward.y = sin(theta);
+    //forward.normalize();
+    //forward.mult(speed);
+    //pos.add(forward);
     
     wrapAround();
   }
