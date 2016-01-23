@@ -14,7 +14,7 @@ class Bullet extends GameObject
     forward.mult(speed);
     pos.add(forward);
     
-    //detectCollisions();
+    detectCollisions();
   }
   
   void detectCollisions()

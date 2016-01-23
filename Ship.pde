@@ -1,6 +1,8 @@
 class Ship extends GameObject
 { 
-  Ship(float x, float y, float w, float t, color c)
+  boolean player1;
+  
+  Ship(float x, float y, float w, float t, color c, boolean p1)
   {
     pos = new PVector(x, y);
     forward = new PVector(1, 0);
@@ -13,6 +15,7 @@ class Ship extends GameObject
     ammo = 10.0f;
     maxAmmo = 10.0f;
     speed = 4.0f;
+    player1 = p1;
   }
   
   void update()
@@ -100,17 +103,36 @@ class Ship extends GameObject
     healthBarWidth = map(health, 0, maxHealth, 0, maxHealthBarWidth);
     ammoBarWidth = map(ammo, 0, maxAmmo, 0, maxAmmoBarWidth);
     
-    // Health Bar
-    fill(0);
-    rect(0, 0, maxHealthBarWidth, barHeight);
-    fill(0, 200, 0);
-    rect(0, 0, healthBarWidth, barHeight);
-    
-    // Ammo Bar
-    fill(0);
-    rect(0, barHeight, maxAmmoBarWidth, barHeight);
-    fill(200, 0, 0);
-    rect(0, barHeight, ammoBarWidth, barHeight);
+    if(player1)
+    {
+      // Player1 Health Bar
+      fill(0);
+      rect(0, 0, maxHealthBarWidth, barHeight);
+      fill(0, 200, 0);
+      rect(0, 0, healthBarWidth, barHeight);
+      
+      // Player1 Ammo Bar
+      fill(0);
+      rect(0, barHeight, maxAmmoBarWidth, barHeight);
+      fill(200, 0, 0);
+      rect(0, barHeight, ammoBarWidth, barHeight);
+    }
+    else
+    {
+      stroke(255);
+      
+      // Player2 Health Bar
+      fill(0);
+      rect(width, 0, -maxHealthBarWidth, barHeight);
+      fill(0, 200, 0);
+      rect(width, 0, -healthBarWidth, barHeight);
+      
+      // Player2 Ammo Bar
+      fill(0);
+      rect(width, barHeight, -maxAmmoBarWidth, barHeight);
+      fill(200, 0, 0);
+      rect(width, barHeight, -ammoBarWidth, barHeight);
+    }
   }
 }
 
