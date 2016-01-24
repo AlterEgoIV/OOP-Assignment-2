@@ -1,4 +1,5 @@
 GameObject pShip1, pShip2;
+GameObject healthDrop;
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 boolean[] keys = new boolean[512];
 
@@ -12,8 +13,11 @@ void setup()
   pShip2 = new Ship('I', 'J', 'L', 'K', width - (width / 20), height / 2, 30.0f, 
   radians(180.0f), color(255, 0, 0), false);
   
+  healthDrop = new HealthDrop();
+  
   gameObjects.add(pShip1);
   gameObjects.add(pShip2);
+  gameObjects.add(healthDrop);
 }
 
 void draw()
