@@ -8,16 +8,8 @@ class HealthDrop extends GameObject
     w = 30.0f;
     halfW = w / 2.0f;
     speed = 1.2f;
+    forward.normalize();
     forward.mult(speed);
-    
-    /*if(millis() - elapsed > second)
-    {
-      GameObject hD = new HealthDrop();
-    
-      gameObjects.add(hD);
-      
-      elapsed = millis();
-    }*/
   }
   
   void update()
@@ -30,7 +22,12 @@ class HealthDrop extends GameObject
     
     detectCollisions();
     
-    
+    /*if(millis() - elapsed > second * 5)
+    {
+      gameObjects.remove(this);
+      
+      elapsed = millis();
+    }*/
   }
   
   void detectCollisions()

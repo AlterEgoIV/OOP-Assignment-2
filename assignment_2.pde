@@ -13,16 +13,19 @@ void setup()
   pShip2 = new Ship('I', 'J', 'L', 'K', width - (width / 20), height / 2, 30.0f, 
   radians(180.0f), color(255, 0, 0), false);
   
-  healthDrop = new HealthDrop();
-  
   gameObjects.add(pShip1);
   gameObjects.add(pShip2);
-  gameObjects.add(healthDrop);
 }
 
 void draw()
 {
   background(0);
+  
+  if(frameCount % 60 == 0)
+  {
+    GameObject healthDrop = new HealthDrop();
+    gameObjects.add(healthDrop);
+  }
   
   for(int i = gameObjects.size() - 1; i >= 0; i--)
   {
@@ -31,8 +34,6 @@ void draw()
     obj.update();
     obj.render();
   }
-  
-  // checkCollisions();
 }
 
 void keyPressed()
@@ -46,11 +47,6 @@ void keyReleased()
 }
 
 /*void checkCollisions()
-{
-  shipCollisions();
-}
-
-void shipCollisions()
 {
   // Go through all objects
   for(int i = gameObjects.size() - 1; i >= 0; i--)
