@@ -9,6 +9,15 @@ class HealthDrop extends GameObject
     halfW = w / 2.0f;
     speed = 1.2f;
     forward.mult(speed);
+    
+    /*if(millis() - elapsed > second)
+    {
+      GameObject hD = new HealthDrop();
+    
+      gameObjects.add(hD);
+      
+      elapsed = millis();
+    }*/
   }
   
   void update()
@@ -20,6 +29,8 @@ class HealthDrop extends GameObject
     wrapAround();
     
     detectCollisions();
+    
+    
   }
   
   void detectCollisions()
@@ -32,8 +43,11 @@ class HealthDrop extends GameObject
       {
         if(dist(pos.x, pos.y, obj.pos.x, obj.pos.y) < obj.halfW)
         {
-          gameObjects.remove(this);
-          obj.health++;
+          if(obj.health < obj.maxHealth)
+          {
+            gameObjects.remove(this);
+            obj.health++;
+          }
         }
       }
     }
