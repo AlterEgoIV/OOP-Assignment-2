@@ -10,6 +10,7 @@ class HealthDrop extends GameObject
     speed = 1.2f;
     forward.normalize();
     forward.mult(speed);
+    second = 60;
   }
   
   void update()
@@ -22,12 +23,12 @@ class HealthDrop extends GameObject
     
     detectCollisions();
     
-    /*if(millis() - elapsed > second * 5)
+    if(elapsed > second * 5)
     {
       gameObjects.remove(this);
-      
-      elapsed = millis();
-    }*/
+    }
+    
+    elapsed++;
   }
   
   void detectCollisions()
