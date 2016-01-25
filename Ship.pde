@@ -1,33 +1,33 @@
 class Ship extends GameObject
 { 
-  float health;
-  float maxHealth;
-  float ammo;
-  float maxAmmo;
-  boolean player1;
+  int health;
+  int maxHealth;
+  int ammo;
+  int maxAmmo;
   char up;
   char left;
   char right;
   char fire;
+  boolean player1;
   
   Ship(char up, char left, char right, char fire, 
        float x, float y, float w, float t, color c, boolean p1)
   {
     pos = new PVector(x, y);
     forward = new PVector(1, 0);
+    this.w = w;
+    halfW = this.w / 2.0f;
+    theta = t;
+    speed = 4.0f;
+    this.c = color(c);
+    health = 10;
+    maxHealth = 10;
+    ammo = 10;
+    maxAmmo = 10;
     this.up = up;
     this.left = left;
     this.right = right;
     this.fire = fire;
-    this.w = w;
-    halfW = this.w / 2.0f;
-    theta = t;
-    this.c = color(c);
-    health = 10.0f;
-    maxHealth = 10.0f;
-    ammo = 10.0f;
-    maxAmmo = 10.0f;
-    speed = 4.0f;
     player1 = p1;
   }
   
@@ -83,7 +83,7 @@ class Ship extends GameObject
   
   void shoot()
   {
-    if(keys[fire] && frameCount % (game.frame * 12) == 0)
+    if(keys[fire] && millis() - game.elapsed > game.second / 5)
     {
       Bullet bullet = new Bullet();
       
@@ -95,13 +95,14 @@ class Ship extends GameObject
       bullet.c = c;
       
       gameObjects.add(bullet);
+      
+      game.elapsed = millis();
     }
   }
   
   void render()
   {
     stroke(c);
-    
     pushMatrix();
     translate(pos.x, pos.y);
     rotate(theta);

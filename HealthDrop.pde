@@ -14,21 +14,21 @@ class HealthDrop extends GameObject
   }
   
   void update()
-  {
-    if(timer == game.frame * 300)
-    {
-      gameObjects.remove(this);
-    }
-    
-    pos.add(forward);
-    
-    theta += .1;
-    
-    wrapAround();
+  { 
+    move();
     
     detectCollisions();
     
-    timer++;
+    removeDrop();
+  }
+  
+  void move()
+  {
+    theta += .1;
+    
+    pos.add(forward);
+    
+    wrapAround();
   }
   
   void detectCollisions()
@@ -51,11 +51,20 @@ class HealthDrop extends GameObject
     }
   }
   
+  void removeDrop()
+  {
+    if(timer == (game.frame * 300))
+    {
+      gameObjects.remove(this);
+    }
+    
+    timer++;
+  }
+  
   void render()
   {
     stroke(c);
     fill(0);
-    
     pushMatrix();
     translate(pos.x, pos.y);
     rotate(theta);

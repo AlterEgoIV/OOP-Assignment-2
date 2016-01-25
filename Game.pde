@@ -14,10 +14,10 @@ class Game
     elapsed = 0;
     second = 1000;
     frame = 1; 
-    healthBarWidth = width / 4;
-    maxHealthBarWidth = width / 4;
-    ammoBarWidth = width / 6;
-    maxAmmoBarWidth = width / 6;
-    barHeight = height / 40;
+    healthBarWidth = width / 4.0f;
+    maxHealthBarWidth = width / 4.0f;
+    ammoBarWidth = width / 6.0f;
+    maxAmmoBarWidth = width / 6.0f;
+    barHeight = height / 40.0f;
   }
 }

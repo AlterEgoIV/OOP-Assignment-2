@@ -22,6 +22,7 @@ abstract class GameObject
   
   // Abstract functions
   abstract void update();
+  abstract void move();
   abstract void render();
   
   void wrapAround()
