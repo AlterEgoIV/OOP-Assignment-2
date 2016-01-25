@@ -5,19 +5,8 @@ abstract class GameObject
   float w;
   float halfW;
   float theta;
-  color c;
-  float health;
-  float maxHealth;
-  float ammo;
-  float maxAmmo;
   float speed;
-  int elapsed;
-  int second;
-  float healthBarWidth;
-  float maxHealthBarWidth;
-  float ammoBarWidth;
-  float maxAmmoBarWidth;
-  float barHeight;
+  color c;
   
   // Generic default values
   GameObject()
@@ -27,18 +16,8 @@ abstract class GameObject
     w = 0.0f;
     halfW = 0.0f;
     theta = 0.0f;
+    speed = 0.0f;
     c = color(255);
-    health = 0.0f;
-    maxHealth = 0.0f;
-    ammo = 0.0f;
-    maxAmmo = 0.0f;
-    elapsed = 0;
-    second = 1000;
-    healthBarWidth = width / 2;
-    maxHealthBarWidth = width / 2;
-    ammoBarWidth = width / 3;
-    maxAmmoBarWidth = width / 3;
-    barHeight = height / 20;
   }
   
   // Abstract functions

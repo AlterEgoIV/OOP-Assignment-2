@@ -1,5 +1,9 @@
 class Ship extends GameObject
 { 
+  float health;
+  float maxHealth;
+  float ammo;
+  float maxAmmo;
   boolean player1;
   char up;
   char left;
@@ -79,7 +83,7 @@ class Ship extends GameObject
   
   void shoot()
   {
-    if(keys[fire] && millis() - elapsed > (second / 5))
+    if(keys[fire] && frameCount % (game.frame * 12) == 0)
     {
       Bullet bullet = new Bullet();
       
@@ -91,8 +95,6 @@ class Ship extends GameObject
       bullet.c = c;
       
       gameObjects.add(bullet);
-      
-      elapsed = millis();
     }
   }
   
@@ -109,22 +111,22 @@ class Ship extends GameObject
     line(-halfW, halfW, 0, 0); // Inside Right
     popMatrix();
     
-    healthBarWidth = map(health, 0, maxHealth, 0, maxHealthBarWidth);
-    ammoBarWidth = map(ammo, 0, maxAmmo, 0, maxAmmoBarWidth);
+    game.healthBarWidth = map(health, 0, maxHealth, 0, game.maxHealthBarWidth);
+    game.ammoBarWidth = map(ammo, 0, maxAmmo, 0, game.maxAmmoBarWidth);
     
     if(player1)
     {
       // Player1 Health Bar
       fill(0);
-      rect(0, 0, maxHealthBarWidth, barHeight);
+      rect(0, 0, game.maxHealthBarWidth, game.barHeight);
       fill(0, 200, 0);
-      rect(0, 0, healthBarWidth, barHeight);
+      rect(0, 0, game.healthBarWidth, game.barHeight);
       
       // Player1 Ammo Bar
       fill(0);
-      rect(0, barHeight, maxAmmoBarWidth, barHeight);
+      rect(0, game.barHeight, game.maxAmmoBarWidth, game.barHeight);
       fill(200, 0, 0);
-      rect(0, barHeight, ammoBarWidth, barHeight);
+      rect(0, game.barHeight, game.ammoBarWidth, game.barHeight);
     }
     else
     {
@@ -132,15 +134,15 @@ class Ship extends GameObject
       
       // Player2 Health Bar
       fill(0);
-      rect(width, 0, -maxHealthBarWidth, barHeight);
+      rect(width, 0, -game.maxHealthBarWidth, game.barHeight);
       fill(0, 200, 0);
-      rect(width, 0, -healthBarWidth, barHeight);
+      rect(width, 0, -game.healthBarWidth, game.barHeight);
       
       // Player2 Ammo Bar
       fill(0);
-      rect(width, barHeight, -maxAmmoBarWidth, barHeight);
+      rect(width, game.barHeight, -game.maxAmmoBarWidth, game.barHeight);
       fill(200, 0, 0);
-      rect(width, barHeight, -ammoBarWidth, barHeight);
+      rect(width, game.barHeight, -game.ammoBarWidth, game.barHeight);
     }
   }
 }

@@ -29,7 +29,7 @@ class Bullet extends GameObject
         {
           if(dist(pos.x, pos.y, obj.pos.x, obj.pos.y) < obj.halfW)
           {
-            obj.health--;
+            ((Ship)obj).health--;
             struck = true;
           }
         }
