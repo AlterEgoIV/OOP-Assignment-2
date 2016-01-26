@@ -25,7 +25,7 @@ class Bullet extends GameObject
         
       if(obj instanceof Ship)
       {
-        if(dist(pos.x, pos.y, obj.pos.x, obj.pos.y) < obj.halfW)
+        if(dist(pos.x, pos.y, obj.pos.x, obj.pos.y) < obj.halfW * 1.5)
         {
           gameObjects.remove(this);
           ((Ship)obj).health--;

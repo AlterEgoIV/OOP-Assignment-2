@@ -32,6 +32,7 @@ void draw()
   if(game.atStart)
   {
     start.display();
+    start.select();
   }
   else if(game.inGame)
   {
@@ -49,7 +50,7 @@ void draw()
       obj.render();
     }
   }
-  else if(game.inGame)
+  else if(game.atEnd)
   {
     
   }
