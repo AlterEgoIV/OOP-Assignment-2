@@ -58,12 +58,12 @@ class Ship extends GameObject
     forward.y = sin(theta);
     
     // forward coordinates are multiplied by speed to get ship velocity
-    forward.mult(speed);
+    // forward.mult(speed);
     
     if(keys[up])
     {
       // forward vector is added to pos vector to get our updated position
-      pos.add(forward);
+      pos.add(PVector.mult(forward, speed));
       
       wrapAround();
     }
@@ -89,7 +89,7 @@ class Ship extends GameObject
       
       bullet.pos.x = pos.x;
       bullet.pos.y = pos.y;
-      bullet.pos.add(PVector.mult(forward, 3));
+      bullet.pos.add(PVector.mult(forward, halfW));
       bullet.theta = theta;
       bullet.speed = speed * 3;
       bullet.c = c;

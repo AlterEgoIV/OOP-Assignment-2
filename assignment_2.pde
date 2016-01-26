@@ -1,4 +1,6 @@
 Game game;
+Screen start;
+Screen end;
 GameObject pShip1, pShip2;
 GameObject healthDrop;
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
@@ -9,6 +11,9 @@ void setup()
   size(800, 600);
   
   game = new Game();
+  
+  start = new StartScreen();
+  end = new EndScreen();
   
   pShip1 = new Ship('W', 'A', 'D', 'S', width / 20, height / 2, 30.0f, 
   radians(0.0f), color(255), true);
@@ -24,18 +29,33 @@ void draw()
 {
   background(0);
   
-  if(frameCount % (game.frame * 120) == 0)
+  if(game.atStart)
   {
-    GameObject healthDrop = new HealthDrop();
-    gameObjects.add(healthDrop);
+    start.display();
   }
-  
-  for(int i = gameObjects.size() - 1; i >= 0; i--)
+  else if(game.inGame)
   {
-    GameObject obj = gameObjects.get(i);
+    if(frameCount % (game.frame * 120) == 0)
+    {
+      GameObject healthDrop = new HealthDrop();
+      gameObjects.add(healthDrop);
+    }
     
-    obj.update();
-    obj.render();
+    for(int i = gameObjects.size() - 1; i >= 0; i--)
+    {
+      GameObject obj = gameObjects.get(i);
+      
+      obj.update();
+      obj.render();
+    }
+  }
+  else if(game.inGame)
+  {
+    
+  }
+  else
+  {
+    println("No mode active.");
   }
 }
 

@@ -1,5 +1,8 @@
 class Game
 {
+  boolean atStart;
+  boolean inGame;
+  boolean atEnd;
   int elapsed;
   int second;
   int frame;
@@ -11,6 +14,9 @@ class Game
   
   Game()
   {
+    atStart = true;
+    inGame = false;
+    atEnd = false;
     elapsed = 0;
     second = 1000;
     frame = 1; 
