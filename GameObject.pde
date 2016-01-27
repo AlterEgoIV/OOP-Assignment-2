@@ -7,6 +7,7 @@ abstract class GameObject
   float theta;
   float speed;
   color c;
+  int elapsed;
   
   // Generic default values
   GameObject()
@@ -18,6 +19,7 @@ abstract class GameObject
     theta = 0.0f;
     speed = 0.0f;
     c = color(255);
+    elapsed = 0;
   }
   
   // Abstract functions

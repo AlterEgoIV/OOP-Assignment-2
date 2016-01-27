@@ -3,8 +3,8 @@ Screen start;
 Screen end;
 GameObject pShip1, pShip2;
 GameObject healthDrop;
-ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
-boolean[] keys = new boolean[512];
+ArrayList<GameObject> gameObjects;
+boolean[] keys;
 
 void setup()
 {
@@ -12,17 +12,7 @@ void setup()
   
   game = new Game();
   
-  start = new StartScreen();
-  end = new EndScreen();
-  
-  pShip1 = new Ship('W', 'A', 'D', 'S', width / 20, height / 2, 30.0f, 
-  radians(0.0f), color(255), true);
-  
-  pShip2 = new Ship('I', 'J', 'L', 'K', width - (width / 20), height / 2, 30.0f, 
-  radians(180.0f), color(255, 0, 0), false);
-  
-  gameObjects.add(pShip1);
-  gameObjects.add(pShip2);
+  game.setupGame();
 }
 
 void draw()
@@ -52,7 +42,8 @@ void draw()
   }
   else if(game.atEnd)
   {
-    
+    end.display();
+    end.select();
   }
   else
   {

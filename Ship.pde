@@ -35,6 +35,7 @@ class Ship extends GameObject
   {
     move();
     shoot();
+    checkAlive();
   }
   
   void move()
@@ -80,7 +81,7 @@ class Ship extends GameObject
   
   void shoot()
   {
-    if(keys[fire] && millis() - game.elapsed > game.second / 5)
+    if(keys[fire] && millis() - elapsed > game.second / 5)
     {
       Bullet bullet = new Bullet();
       
@@ -93,7 +94,17 @@ class Ship extends GameObject
       
       gameObjects.add(bullet);
       
-      game.elapsed = millis();
+      elapsed = millis();
+    }
+  }
+  
+  void checkAlive()
+  {
+    if(health <= 0)
+    {
+      gameObjects.remove(this);
+      game.inGame = false;
+      game.atEnd = true;
     }
   }
   

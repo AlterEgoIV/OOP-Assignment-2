@@ -2,6 +2,8 @@ class StartScreen extends Screen
 {
   void display()
   {
+    fill(255);
+    
     textSize(96);
     textAlign(CENTER);
     text("SpaceWars", width / 2, height / 2);
