@@ -4,7 +4,7 @@ Screen end;
 GameObject pShip1, pShip2;
 GameObject healthDrop;
 ArrayList<GameObject> gameObjects;
-boolean[] keys;
+boolean[] keys = new boolean[512];
 
 void setup()
 {
@@ -24,9 +24,14 @@ void draw()
     start.display();
     start.select();
   }
-  else if(game.inGame)
+  else if(game.atEnd)
   {
-    if(frameCount % (game.frame * 120) == 0)
+    end.display();
+    end.select();
+  }
+  else
+  {
+    if(frameCount % 120 == 0)
     {
       GameObject healthDrop = new HealthDrop();
       gameObjects.add(healthDrop);
@@ -39,15 +44,6 @@ void draw()
       obj.update();
       obj.render();
     }
-  }
-  else if(game.atEnd)
-  {
-    end.display();
-    end.select();
-  }
-  else
-  {
-    println("No mode active.");
   }
 }
 

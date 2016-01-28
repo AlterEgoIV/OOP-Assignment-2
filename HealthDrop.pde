@@ -1,7 +1,5 @@
 class HealthDrop extends GameObject
 {
-  int timer;
-  
   HealthDrop()
   {
     pos = new PVector(random(0, width), random(height / 10, height));
@@ -10,7 +8,6 @@ class HealthDrop extends GameObject
     theta = radians(random(0, 360));
     w = 30.0f;
     halfW = w / 2.0f;
-    timer = 0;
   }
   
   void update()
@@ -53,12 +50,12 @@ class HealthDrop extends GameObject
   
   void removeDrop()
   {
-    if(timer == (game.frame * 300))
+    if(elapsed == 300)
     {
       gameObjects.remove(this);
     }
     
-    timer++;
+    elapsed++;
   }
   
   void render()

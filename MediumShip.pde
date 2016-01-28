@@ -2,6 +2,9 @@ class MediumShip extends Ship
 {
   MediumShip(char up, char left, char right, char fire, boolean player1)
   {
+    pos = new PVector(0, 0);
+    forward = new PVector(0, 0);
+    
     this.up = up;
     this.left = left;
     this.right = right;
@@ -13,7 +16,7 @@ class MediumShip extends Ship
       pos.x = width / 20.0f;
       pos.y = height / 4.0f;
       theta = radians(0.0f);
-      c = color(0, 0, 255);
+      c = color(0, 190, 255);
     }
     else
     {
@@ -39,7 +42,12 @@ class MediumShip extends Ship
   
   void checkState()
   {
-    
+    if(health <= 0)
+    {
+      gameObjects.remove(this);
+      game.inGame = false;
+      game.atEnd = true;
+    }
   }
   
   void move()
@@ -85,7 +93,21 @@ class MediumShip extends Ship
   
   void fire()
   {
-    
+    if(keys[fire] && millis() - elapsed > game.second / 5)
+    {
+      Bullet bullet = new Bullet();
+      
+      bullet.pos.x = pos.x;
+      bullet.pos.y = pos.y;
+      bullet.pos.add(PVector.mult(forward, halfW + 1));
+      bullet.theta = theta;
+      bullet.speed = speed * 3;
+      bullet.c = c;
+      
+      gameObjects.add(bullet);
+      
+      elapsed = millis();
+    }
   }
   
   void render()
@@ -105,6 +127,8 @@ class MediumShip extends Ship
     
     if(player1)
     {
+      stroke(255);
+      
       // Player1 Health Bar
       fill(0);
       rect(0, 0, game.maxHealthBarWidth, game.barHeight);

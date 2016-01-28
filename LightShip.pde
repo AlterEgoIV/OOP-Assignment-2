@@ -2,6 +2,9 @@ class LightShip extends Ship
 {
   LightShip(char up, char left, char right, char fire, boolean player1)
   {
+    pos = new PVector(0, 0);
+    forward = new PVector(0, 0);
+    
     this.up = up;
     this.left = left;
     this.right = right;
@@ -13,7 +16,7 @@ class LightShip extends Ship
       pos.x = width / 20.0f;
       pos.y = height / 4.0f;
       theta = radians(0.0f);
-      c = color(0, 0, 255);
+      c = color(0, 190, 255);
     }
     else
     {
@@ -23,7 +26,7 @@ class LightShip extends Ship
       c = color(255, 0, 0);
     }
     
-    speed = 8.0f;
+    speed = 7.0f;
     health = 7;
     maxHealth = 7;
     ammo = 10;
@@ -39,7 +42,12 @@ class LightShip extends Ship
   
   void checkState()
   {
-    
+    if(health <= 0)
+    {
+      gameObjects.remove(this);
+      game.inGame = false;
+      game.atEnd = true;
+    }
   }
   
   void move()
@@ -108,10 +116,12 @@ class LightShip extends Ship
     pushMatrix();
     translate(pos.x, pos.y);
     rotate(theta);
-    line(-halfW, -halfW, halfW, 0); // Outside Left
-    line(-halfW, halfW, halfW, 0); // Outside Right
-    line(-halfW, -halfW, 0, 0); // Inside Left
-    line(-halfW, halfW, 0, 0); // Inside Right
+    fill(c);
+    triangle(0, -halfW / 2, 0, halfW / 2, halfW, 0); // front
+    triangle(0, -halfW / 2, 0, halfW / 2, -halfW, 0); // back
+    fill(0);
+    triangle(-halfW, 0, 0, -halfW / 2, -halfW - (halfW / 2), -halfW); // left
+    triangle(-halfW, 0, 0, halfW / 2, -halfW - (halfW / 2), halfW); // right
     popMatrix();
     
     game.healthBarWidth = map(health, 0, maxHealth, 0, game.maxHealthBarWidth);
@@ -119,6 +129,8 @@ class LightShip extends Ship
     
     if(player1)
     {
+      stroke(255);
+      
       // Player1 Health Bar
       fill(0);
       rect(0, 0, game.maxHealthBarWidth, game.barHeight);
