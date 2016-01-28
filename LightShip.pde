@@ -1,20 +1,45 @@
 class LightShip extends Ship
 {
-  LightShip()
+  LightShip(char up, char left, char right, char fire, boolean player1)
   {
-    super();
+    this.up = up;
+    this.left = left;
+    this.right = right;
+    this.fire = fire;
+    this.player1 = player1;
+    
+    if(this.player1)
+    {
+      pos.x = width / 20.0f;
+      pos.y = height / 4.0f;
+      theta = radians(0.0f);
+      c = color(0, 0, 255);
+    }
+    else
+    {
+      pos.x = width - (width / 20.0f);
+      pos.y = height - (height / 4.0f);
+      theta = radians(180.0f);
+      c = color(255, 0, 0);
+    }
+    
+    speed = 8.0f;
+    health = 7;
+    maxHealth = 7;
+    ammo = 10;
+    maxAmmo = 10;
   }
   
   void update()
   {
-    
+    checkState();
+    move();
+    fire();
   }
   
   void checkState()
   {
-    checkState();
-    move();
-    fire();
+    
   }
   
   void move()

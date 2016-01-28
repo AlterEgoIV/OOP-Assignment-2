@@ -1,8 +1,33 @@
 class MediumShip extends Ship
 {
-  MediumShip()
+  MediumShip(char up, char left, char right, char fire, boolean player1)
   {
-    super();
+    this.up = up;
+    this.left = left;
+    this.right = right;
+    this.fire = fire;
+    this.player1 = player1;
+    
+    if(this.player1)
+    {
+      pos.x = width / 20.0f;
+      pos.y = height / 4.0f;
+      theta = radians(0.0f);
+      c = color(0, 0, 255);
+    }
+    else
+    {
+      pos.x = width - (width / 20.0f);
+      pos.y = height - (height / 4.0f);
+      theta = radians(180.0f);
+      c = color(255, 0, 0);
+    }
+    
+    speed = 4.0f;
+    health = 10;
+    maxHealth = 10;
+    ammo = 10;
+    maxAmmo = 10;
   }
   
   void update()
