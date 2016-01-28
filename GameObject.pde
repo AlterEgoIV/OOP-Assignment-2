@@ -12,7 +12,7 @@ abstract class GameObject
   // Generic default values
   GameObject()
   {
-    pos = new PVector(width / 2, height / 2);
+    pos = new PVector(width / 2.0f, height / 2.0f);
     forward = new PVector(1, 0);
     w = 0.0f;
     halfW = 0.0f;
@@ -39,29 +39,29 @@ abstract class GameObject
       pos.x = width;
     }
     
-    if(pos.x < width / 3 || pos.x > ((width / 3) * 2))
+    if(pos.x < game.maxHealthBarWidth || pos.x > game.maxHealthBarWidth * 2.0f)
     {
-      if(pos.y - halfW < height / 10)
+      if(pos.y - halfW < game.barHeight * 2.0f)
       {
         pos.y = height;
       }
       
       if(pos.y > height)
       {
-        pos.y = halfW + (height / 10);
+        pos.y = halfW + game.barHeight * 2.0f;
       }
     }
     
-    if(pos.x > width / 3 && pos.x < ((width / 3) * 2))
+    if(pos.x > game.maxHealthBarWidth && pos.x < game.maxHealthBarWidth * 2.0f)
     {
-      if(pos.y - halfW < height / 20)
+      if(pos.y - halfW < 0)
       {
         pos.y = height;
       }
       
       if(pos.y > height)
       {
-        pos.y = halfW + (height / 20);
+        pos.y = halfW;
       }
     }
   }

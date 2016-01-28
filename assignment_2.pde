@@ -11,7 +11,6 @@ void setup()
   size(800, 600);
   
   game = new Game();
-  
   game.setupGame();
 }
 
@@ -37,7 +36,7 @@ void draw()
       gameObjects.add(healthDrop);
     }
     
-    for(int i = gameObjects.size() - 1; i >= 0; i--)
+    for(int i = gameObjects.size() - 1; i >= 0; --i)
     {
       GameObject obj = gameObjects.get(i);
       

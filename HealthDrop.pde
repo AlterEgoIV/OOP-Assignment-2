@@ -13,24 +13,20 @@ class HealthDrop extends GameObject
   void update()
   { 
     move();
-    
     detectCollisions();
-    
     removeDrop();
   }
   
   void move()
   {
     theta += .1;
-    
     pos.add(forward);
-    
     wrapAround();
   }
   
   void detectCollisions()
   {
-    for(int i = 0; i < gameObjects.size(); i++)
+    for(int i = gameObjects.size() - 1; i >= 0; --i)
     {
       GameObject obj = gameObjects.get(i);
       

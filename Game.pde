@@ -1,7 +1,6 @@
 class Game
 {
   boolean atStart;
-  boolean inGame;
   boolean atEnd;
   int second;
   float healthBarWidth;
@@ -30,10 +29,12 @@ class Game
     end = new EndScreen();
     
     pShip1 = new LightShip('W', 'A', 'D', 'S', true);
-    //pShip1 = new MediumShip('W', 'A', 'D', 'S', true);
-    //pShip1 = new HeavyShip('W', 'A', 'D', 'S', true);
+    // pShip1 = new MediumShip('W', 'A', 'D', 'S', true);
+    // pShip1 = new HeavyShip('W', 'A', 'D', 'S', true);
     
+    // pShip2 = new LightShip('I', 'J', 'L', 'K', false);
     pShip2 = new MediumShip('I', 'J', 'L', 'K', false);
+    // pShip2 = new HeavyShip('I', 'J', 'L', 'K', false);
     
     gameObjects.add(pShip1);
     gameObjects.add(pShip2);

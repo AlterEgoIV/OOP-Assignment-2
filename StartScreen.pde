@@ -6,10 +6,10 @@ class StartScreen extends Screen
     
     textSize(96);
     textAlign(CENTER);
-    text("SpaceWars", width / 2, height / 2);
+    text("SpaceWars", width / 2.0f, height / 2.0f);
     
     textSize(32);
-    text("Press SPACE BAR to begin", width / 2, (height / 2) + (height / 10));
+    text("Press SPACE BAR to begin", width / 2.0f, (height / 2.0f) + (height / 10.0f));
   }
   
   void select()
@@ -17,7 +17,6 @@ class StartScreen extends Screen
     if(keys[' '])
     {
       game.atStart = false;
-      game.inGame = true;
     }
   }
 }

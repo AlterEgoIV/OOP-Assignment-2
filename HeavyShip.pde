@@ -45,7 +45,6 @@ class HeavyShip extends Ship
     if(health <= 0)
     {
       gameObjects.remove(this);
-      game.inGame = false;
       game.atEnd = true;
     }
   }

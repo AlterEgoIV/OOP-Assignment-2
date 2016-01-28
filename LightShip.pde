@@ -26,7 +26,7 @@ class LightShip extends Ship
       c = color(255, 0, 0);
     }
     
-    speed = 7.0f;
+    speed = 6.0f;
     health = 7;
     maxHealth = 7;
     ammo = 10;
@@ -45,7 +45,6 @@ class LightShip extends Ship
     if(health <= 0)
     {
       gameObjects.remove(this);
-      game.inGame = false;
       game.atEnd = true;
     }
   }
