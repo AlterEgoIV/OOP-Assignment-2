@@ -2,7 +2,6 @@ Game game;
 Screen start;
 Screen end;
 GameObject pShip1, pShip2;
-GameObject healthDrop;
 ArrayList<GameObject> gameObjects;
 boolean[] keys = new boolean[512];
 
@@ -30,6 +29,12 @@ void draw()
   }
   else
   {
+    if(frameCount % 6 == 0)
+    {
+      GameObject star = new Star();
+      gameObjects.add(star);
+    }
+    
     if(frameCount % 120 == 0)
     {
       GameObject healthDrop = new HealthDrop();
