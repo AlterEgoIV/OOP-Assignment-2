@@ -18,7 +18,7 @@ class Star extends GameObject
   
   void render()
   {
-    fill(255);
+    stroke(255);
     pushMatrix();
     translate(pos.x, pos.y);
     rect(0, 0, 1, 1);

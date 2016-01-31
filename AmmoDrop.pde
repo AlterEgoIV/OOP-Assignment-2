@@ -2,7 +2,7 @@ class AmmoDrop extends Drop
 {
   AmmoDrop()
   {
-    c = color(0, 255, 0);
+    c = color(255, 0, 0);
   }
   void update()
   {

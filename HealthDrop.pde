@@ -2,7 +2,7 @@ class HealthDrop extends Drop
 {
   HealthDrop()
   {
-    c = color(255, 0, 0);
+    c = color(0, 255, 0);
   }
   
   void update()
