@@ -35,10 +35,13 @@ void draw()
       gameObjects.add(star);
     }
     
-    if(frameCount % 120 == 0)
+    // Spawn Drop once every 3 seconds
+    if(frameCount % 180 == 0)
     {
       GameObject healthDrop = new HealthDrop();
+      GameObject ammoDrop = new AmmoDrop();
       gameObjects.add(healthDrop);
+      gameObjects.add(ammoDrop);
     }
     
     for(int i = gameObjects.size() - 1; i >= 0; --i)

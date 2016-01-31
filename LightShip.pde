@@ -92,7 +92,7 @@ class LightShip extends Ship
   
   void fire()
   {
-    if(keys[fire] && millis() - elapsed > game.second / 5)
+    if(keys[fire] && ammo > 0 && millis() - elapsed > game.second / 5)
     {
       Bullet bullet = new Bullet();
       
@@ -104,6 +104,8 @@ class LightShip extends Ship
       bullet.c = c;
       
       gameObjects.add(bullet);
+      
+      ammo--;
       
       elapsed = millis();
     }

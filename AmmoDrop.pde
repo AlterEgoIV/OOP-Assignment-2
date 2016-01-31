@@ -1,12 +1,11 @@
-class HealthDrop extends Drop
+class AmmoDrop extends Drop
 {
-  HealthDrop()
+  AmmoDrop()
   {
-    c = color(255, 0, 0);
+    c = color(0, 255, 0);
   }
-  
   void update()
-  { 
+  {
     move();
     detectCollisions();
     removeDrop();
@@ -22,9 +21,9 @@ class HealthDrop extends Drop
       {
         if(dist(pos.x, pos.y, ((Ship)obj).pos.x, ((Ship)obj).pos.y) < halfW + ((Ship)obj).halfW)
         {
-          if(((Ship)obj).health < ((Ship)obj).maxHealth)
+          if(((Ship)obj).ammo < ((Ship)obj).maxAmmo)
           {
-            ((Ship)obj).health++;
+            ((Ship)obj).ammo++;
             gameObjects.remove(this);
           }
         }
