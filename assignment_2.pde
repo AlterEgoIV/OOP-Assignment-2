@@ -1,7 +1,7 @@
 Game game;
 Screen start;
 Screen end;
-GameObject pShip1, pShip2;
+GameObject pShip, eShip;
 ArrayList<GameObject> gameObjects;
 boolean[] keys = new boolean[512];
 

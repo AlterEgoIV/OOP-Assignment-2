@@ -28,15 +28,15 @@ class Game
     start = new StartScreen();
     end = new EndScreen();
     
-    pShip1 = new LightShip('W', 'A', 'D', 'S', true);
-    // pShip1 = new MediumShip('W', 'A', 'D', 'S', true);
-    // pShip1 = new HeavyShip('W', 'A', 'D', 'S', true);
+    // pShip = new PlayerLightShip('W', 'A', 'D', 'S');
+    // pShip = new PlayerMediumShip('W', 'A', 'D', 'S');
+    pShip = new PlayerHeavyShip('W', 'A', 'D', 'S');
     
-    // pShip2 = new LightShip('I', 'J', 'L', 'K', false);
-    pShip2 = new MediumShip('I', 'J', 'L', 'K', false);
-    // pShip2 = new HeavyShip('I', 'J', 'L', 'K', false);
+    // pShip2 = new EnemyLightShip('I', 'J', 'L', 'K');
+    eShip = new EnemyMediumShip();
+    // pShip2 = new EnemyHeavyShip('I', 'J', 'L', 'K');
     
-    gameObjects.add(pShip1);
-    gameObjects.add(pShip2);
+    gameObjects.add(pShip);
+    gameObjects.add(eShip);
   }
 }
