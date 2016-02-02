@@ -1,10 +1,14 @@
 abstract class Projectile extends GameObject
 {
   int damage;
+  boolean playerProjectile;
+  boolean enemyProjectile;
   
   Projectile()
   {
     damage = 0;
+    playerProjectile = false;
+    enemyProjectile = false;
   }
   
   void update()
@@ -28,12 +32,21 @@ abstract class Projectile extends GameObject
     {
       GameObject obj = gameObjects.get(i);
         
-      if(obj instanceof Ship)
+      if(obj instanceof EnemyShip && playerProjectile)
       {
-        if(dist(pos.x, pos.y, obj.pos.x, obj.pos.y) < obj.halfW * 1.5)
+        if(dist(pos.x, pos.y, obj.pos.x, obj.pos.y) < obj.halfW)
         {
           gameObjects.remove(this);
-          ((Ship)obj).health -= damage;
+          ((EnemyShip)obj).health -= damage;
+        }
+      }
+      
+      if(obj instanceof PlayerShip && enemyProjectile)
+      {
+        if(dist(pos.x, pos.y, obj.pos.x, obj.pos.y) < obj.halfW)
+        {
+          gameObjects.remove(this);
+          ((PlayerShip)obj).health -= damage;
         }
       }
     }

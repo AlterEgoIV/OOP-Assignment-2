@@ -1,4 +1,4 @@
-class PlayerMediumShip extends Ship
+class PlayerMediumShip extends PlayerShip
 {
   PlayerMediumShip(char up, char left, char right, char fire)
   {
@@ -20,6 +20,7 @@ class PlayerMediumShip extends Ship
     checkState();
     move();
     fire();
+    detectCollisions();
   }
   
   void move()
@@ -60,6 +61,7 @@ class PlayerMediumShip extends Ship
       bullet.theta = theta;
       bullet.speed = speed * 3;
       bullet.c = c;
+      bullet.playerProjectile = true;
       
       gameObjects.add(bullet);
       

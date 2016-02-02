@@ -1,4 +1,4 @@
-class EnemyMediumShip extends Ship
+class EnemyMediumShip extends EnemyShip
 {
   EnemyMediumShip()
   {
@@ -40,7 +40,7 @@ class EnemyMediumShip extends Ship
     {
       theta = atan2(pShip.pos.y - pos.y, pShip.pos.x - pos.x);
       
-      // fire();
+      fire();
     }
     
     if(health < maxHealth / 2)
@@ -77,6 +77,7 @@ class EnemyMediumShip extends Ship
       bullet.theta = theta;
       bullet.speed = speed * 3;
       bullet.c = c;
+      bullet.enemyProjectile = true;
       
       gameObjects.add(bullet);
       

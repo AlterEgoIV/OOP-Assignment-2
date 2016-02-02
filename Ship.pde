@@ -28,6 +28,37 @@ abstract class Ship extends GameObject
     }
   }
   
+  void detectCollisions()
+  {
+    for(int i = gameObjects.size() - 1; i >= 0; --i)
+    {
+      GameObject obj = gameObjects.get(i);
+        
+      if(obj instanceof EnemyShip)
+      {
+        if(dist(pos.x, pos.y, obj.pos.x, obj.pos.y) < halfW + obj.halfW)
+        {
+          if(pos.x < obj.pos.x)
+          {
+            pos.x -= halfW;
+          }
+          else if(pos.x > obj.pos.x)
+          {
+            pos.x += halfW;
+          }
+          else if(pos.y < obj.pos.y)
+          {
+            pos.y -= halfW;
+          }
+          else
+          {
+            pos.y += halfW;
+          }
+        }
+      }
+    }
+  }
+  
   /* 
     void move()
     {
