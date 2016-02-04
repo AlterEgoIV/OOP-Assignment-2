@@ -31,19 +31,24 @@ void draw()
   }
   else
   {
-    if(frameCount % 6 == 0)
+    if(frameCount % 3 == 0)
     {
       GameObject star = new Star();
       gameObjects.add(star);
     }
     
-    // Spawn Drop once every 3 seconds
-    if(frameCount % 180 == 0)
+    // Spawn AmmoDrop once every half a second
+    if(frameCount % 30 == 0)
+    {
+      GameObject ammoDrop = new AmmoDrop();
+      gameObjects.add(ammoDrop);
+    }
+    
+    // Spawn Health Drop once every second
+    if(frameCount % 60 == 0)
     {
       GameObject healthDrop = new HealthDrop();
-      GameObject ammoDrop = new AmmoDrop();
       gameObjects.add(healthDrop);
-      gameObjects.add(ammoDrop);
     }
     
     for(int i = gameObjects.size() - 1; i >= 0; --i)

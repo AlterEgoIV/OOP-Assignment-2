@@ -29,7 +29,7 @@ class Game
     end = new EndScreen();
     
     // pShip = new PlayerLightShip('W', 'A', 'D', 'S');
-    pShip = new PlayerMediumShip('W', 'A', 'D', 'S');
+    pShip = new PlayerMediumShip();
     // pShip = new PlayerHeavyShip('W', 'A', 'D', 'S');
     
     // pShip2 = new EnemyLightShip('I', 'J', 'L', 'K');

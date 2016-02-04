@@ -21,8 +21,8 @@ abstract class Drop extends GameObject
   
   void removeDrop()
   {
-    // Drops are removed after 7 seconds if not consumed
-    if(elapsed == 420)
+    // Drops are removed after 5 seconds if not consumed
+    if(elapsed == 300)
     {
       gameObjects.remove(this);
     }

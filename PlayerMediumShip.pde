@@ -1,18 +1,14 @@
 class PlayerMediumShip extends PlayerShip
 {
-  PlayerMediumShip(char up, char left, char right, char fire)
+  PlayerMediumShip()
   {
     pos = new PVector(width / 20.0f, height / 4.0f);
     forward = new PVector(1, 0);
-    this.up = up;
-    this.left = left;
-    this.right = right;
-    this.fire = fire;
     theta = radians(0.0f);
     c = color(0, 190, 255);
     speed = 4.0f;
-    health = 10;
-    maxHealth = 10;
+    health = 20;
+    maxHealth = 20;
   }
   
   void update()
@@ -28,7 +24,7 @@ class PlayerMediumShip extends PlayerShip
     forward.x = cos(theta);
     forward.y = sin(theta);
     
-    if(keys[up])
+    if(keys[UP])
     {
       // forward vector is multiplied by speed and added to pos vector to get our updated position
       pos.add(PVector.mult(forward, speed));
@@ -36,13 +32,13 @@ class PlayerMediumShip extends PlayerShip
       wrapAround();
     }
         
-    if(keys[left])
+    if(keys[LEFT])
     {
       // Rotates ship to the left
       theta -= .1f;
     }
         
-    if(keys[right])
+    if(keys[RIGHT])
     {
       // Rotates ship to the right
       theta += .1f;
@@ -51,7 +47,7 @@ class PlayerMediumShip extends PlayerShip
   
   void fire()
   {
-    if(keys[fire] && ammo > 0 && millis() - elapsed > game.second / 5)
+    if(keys[' '] && ammo > 0 && millis() - elapsed > game.second / 5)
     {
       Bullet bullet = new Bullet();
       

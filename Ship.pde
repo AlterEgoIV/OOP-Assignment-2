@@ -4,10 +4,6 @@ abstract class Ship extends GameObject
   int maxHealth;
   int ammo;
   int maxAmmo;
-  char up;
-  char left;
-  char right;
-  char fire;
   
   Ship()
   {

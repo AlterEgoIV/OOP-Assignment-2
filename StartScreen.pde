@@ -14,7 +14,7 @@ class StartScreen extends Screen
   
   void select()
   {
-    if(keys[' '])
+    if(keys[ENTER] || keys[RETURN])
     {
       game.atStart = false;
     }
