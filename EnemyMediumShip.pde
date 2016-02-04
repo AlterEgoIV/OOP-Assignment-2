@@ -31,26 +31,29 @@ class EnemyMediumShip extends EnemyShip
   
   void chooseAction()
   {
-    if(dist(pos.x, pos.y, pShip.pos.x, pShip.pos.y) >= width / 4)
+    if(health > maxHealth / 2)
+    {
+      theta = atan2(pShip.pos.y - pos.y, pShip.pos.x - pos.x);
+    }
+    
+    if(dist(pos.x, pos.y, pShip.pos.x, pShip.pos.y) >= width / 4 && health > maxHealth / 2 && ammo > 0)
     {
       move();
     }
     
-    if(health > maxHealth / 2)
+    if(health > maxHealth / 2 && ammo > 0)
     {
-      theta = atan2(pShip.pos.y - pos.y, pShip.pos.x - pos.x);
-      
       fire();
     }
     
     if(health < maxHealth / 2)
     {
-      lookForHealth();
+      //lookForHealth();
     }
     
     if(health > maxHealth / 2 && ammo < maxAmmo / 2)
     {
-      lookForAmmo();
+      //lookForAmmo();
     }
   }
   
@@ -81,7 +84,7 @@ class EnemyMediumShip extends EnemyShip
       
       gameObjects.add(bullet);
       
-      ammo--;
+      //ammo--;
       
       elapsed = millis();
     }
@@ -89,21 +92,44 @@ class EnemyMediumShip extends EnemyShip
   
   void lookForHealth()
   {
+    float min;
+    
     for(int i = gameObjects.size() - 1; i >= 0; --i)
     {
       GameObject obj = gameObjects.get(i);
       
       if(obj instanceof HealthDrop)
       {
-        if(dist(pos.x, pos.y, obj.pos.x, obj.pos.y) < width / 2)
+        distance.add(dist(pos.x, pos.y, obj.pos.x, obj.pos.y));
+      }
+    }
+    
+    min = distance.get(0);
+    
+    for(int i = 0; i < distance.size(); ++i)
+    {
+      if(distance.get(i) < min)
+      {
+        min = distance.get(i);
+      }
+    }
+    
+    for(int i = gameObjects.size() - 1; i >= 0; --i)
+    {
+      GameObject obj = gameObjects.get(i);
+      
+      if(obj instanceof HealthDrop)
+      {
+        if(min == dist(pos.x, pos.y, obj.pos.x, obj.pos.y))
         {
           theta = atan2(obj.pos.y - pos.y, obj.pos.x - pos.x);
           
           forward.x = cos(theta);
           forward.y = sin(theta);
 
-          // forward vector is multiplied by speed and added to pos vector to get our updated position
           pos.add(PVector.mult(forward, speed));
+          
+          distance = new ArrayList<Float>();
         }
       }
     }
