@@ -1,6 +1,6 @@
 class PlayerHeavyShip extends PlayerShip
 {
-  PlayerHeavyShip(char up, char left, char right, char fire)
+  PlayerHeavyShip()
   {
     pos = new PVector(width / 20.0f, height / 4.0f);
     forward = new PVector(1, 0);
@@ -9,6 +9,8 @@ class PlayerHeavyShip extends PlayerShip
     speed = 2.0f;
     health = 30;
     maxHealth = 30;
+    ammo = 30;
+    maxAmmo = 30;
   }
   
   void update()
@@ -17,6 +19,7 @@ class PlayerHeavyShip extends PlayerShip
     move();
     fire();
     detectCollisions();
+    wrapAround();
   }
   
   void move()
@@ -28,8 +31,6 @@ class PlayerHeavyShip extends PlayerShip
     {
       // forward vector is multiplied by speed and added to pos vector to get our updated position
       pos.add(PVector.mult(forward, speed));
-      
-      wrapAround();
     }
         
     if(keys[LEFT])
@@ -47,21 +48,21 @@ class PlayerHeavyShip extends PlayerShip
   
   void fire()
   {
-    if(keys[' '] && ammo > 0 && millis() - elapsed > game.second / 5)
+    if(keys[' '] && ammo >= 5 && millis() - elapsed > game.second)
     {
-      Bullet bullet = new Bullet();
+      Energyball eb = new Energyball();
       
-      bullet.pos.x = pos.x;
-      bullet.pos.y = pos.y;
-      bullet.pos.add(PVector.mult(forward, halfW + 1));
-      bullet.theta = theta;
-      bullet.speed = speed * 3;
-      bullet.c = c;
-      bullet.playerProjectile = true;
+      eb.pos.x = pos.x;
+      eb.pos.y = pos.y;
+      eb.pos.add(PVector.mult(forward, halfW + 1));
+      eb.theta = theta;
+      eb.speed = speed * 6;
+      eb.c = c;
+      eb.playerProjectile = true;
       
-      gameObjects.add(bullet);
+      gameObjects.add(eb);
       
-      ammo--;
+      //ammo -= 2;
       
       elapsed = millis();
     }
@@ -77,8 +78,8 @@ class PlayerHeavyShip extends PlayerShip
     strokeWeight(3);
     ellipse(0, 0, w, w);
     strokeWeight(1);
-    line(-halfW, -halfW, halfW, 0); // Outside Left
-    line(-halfW, halfW, halfW, 0); // Outside Right
+    line(-halfW, -halfW, halfW + 5, 0); // Outside Left
+    line(-halfW, halfW, halfW + 5, 0); // Outside Right
     line(-halfW, -halfW, 0, 0); // Inside Left
     line(-halfW, halfW, 0, 0); // Inside Right
     popMatrix();

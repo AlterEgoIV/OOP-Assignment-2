@@ -16,21 +16,21 @@ class EnemyHeavyShip extends EnemyShip
     forward.x = cos(theta);
     forward.y = sin(theta);
     
-    if(ammo > 0 && millis() - elapsed > game.second / 5)
+    if(ammo >= 5 && millis() - elapsed > game.second)
     {
-      Bullet bullet = new Bullet();
+      Energyball eb = new Energyball();
       
-      bullet.pos.x = pos.x;
-      bullet.pos.y = pos.y;
-      bullet.pos.add(PVector.mult(forward, halfW + 1));
-      bullet.theta = theta;
-      bullet.speed = speed * 3;
-      bullet.c = c;
-      bullet.enemyProjectile = true;
+      eb.pos.x = pos.x;
+      eb.pos.y = pos.y;
+      eb.pos.add(PVector.mult(forward, halfW + 1));
+      eb.theta = theta;
+      eb.speed = speed * 5;
+      eb.c = c;
+      eb.playerProjectile = true;
       
-      gameObjects.add(bullet);
+      gameObjects.add(eb);
       
-      ammo--;
+      ammo -= 5;
       
       elapsed = millis();
     }
@@ -46,8 +46,8 @@ class EnemyHeavyShip extends EnemyShip
     strokeWeight(3);
     ellipse(0, 0, w, w);
     strokeWeight(1);
-    line(-halfW, -halfW, halfW, 0); // Outside Left
-    line(-halfW, halfW, halfW, 0); // Outside Right
+    line(-halfW, -halfW, halfW + 5, 0); // Outside Left
+    line(-halfW, halfW, halfW + 5, 0); // Outside Right
     line(-halfW, -halfW, 0, 0); // Inside Left
     line(-halfW, halfW, 0, 0); // Inside Right
     popMatrix();

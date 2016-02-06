@@ -1,6 +1,6 @@
 class PlayerLightShip extends PlayerShip
 {
-  PlayerLightShip(char up, char left, char right, char fire)
+  PlayerLightShip()
   {
     pos = new PVector(width / 20.0f, height / 4.0f);
     forward = new PVector(1, 0);   
@@ -17,6 +17,7 @@ class PlayerLightShip extends PlayerShip
     move();
     fire();
     detectCollisions();
+    wrapAround();
   }
   
   void move()
@@ -28,8 +29,6 @@ class PlayerLightShip extends PlayerShip
     {
       // forward vector is multiplied by speed and added to pos vector to get our updated position
       pos.add(PVector.mult(forward, speed));
-      
-      wrapAround();
     }
         
     if(keys[LEFT])

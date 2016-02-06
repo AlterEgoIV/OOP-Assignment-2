@@ -8,7 +8,7 @@ boolean[] keys = new boolean[512];
 
 void setup()
 {
-  size(800, 600);
+  size(1200, 800);
   
   game = new Game();
   game.setupGame();

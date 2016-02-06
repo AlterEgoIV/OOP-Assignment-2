@@ -9,8 +9,8 @@ class PlayerMediumShip extends PlayerShip
     speed = 4.0f;
     health = 20;
     maxHealth = 20;
-    ammo = 40;
-    maxAmmo = 40;
+    ammo = 50;
+    maxAmmo = 50;
   }
   
   void fire()

@@ -1,20 +1,21 @@
-class Bullet extends Projectile
+class Energyball extends Projectile
 {
-  Bullet()
+  Energyball()
   {
-    damage = 1;
-    w = 5.0f;
+    damage = 5;
+    w = 40.0f;
     halfW = w / 2.0f;
   }
   
   void render()
   {
     stroke(c);
+    fill(c);
     strokeWeight(3);
     pushMatrix();
     translate(pos.x, pos.y);
     rotate(theta);
-    line(-halfW, 0, halfW, 0);
+    ellipse(0, 0, halfW, halfW);
     popMatrix();
     strokeWeight(1);
   }

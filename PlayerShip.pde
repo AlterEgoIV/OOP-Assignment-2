@@ -11,6 +11,7 @@ abstract class PlayerShip extends Ship
     move();
     fire();
     detectCollisions();
+    wrapAround();
   }
   
   void move()
@@ -22,8 +23,6 @@ abstract class PlayerShip extends Ship
     {
       // forward vector is multiplied by speed and added to pos vector to get our updated position
       pos.add(PVector.mult(forward, speed));
-      
-      wrapAround();
     }
         
     if(keys[LEFT])

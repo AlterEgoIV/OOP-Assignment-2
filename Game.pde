@@ -28,13 +28,13 @@ class Game
     start = new StartScreen();
     end = new EndScreen();
     
-    // pShip = new PlayerLightShip('W', 'A', 'D', 'S');
-    pShip = new PlayerMediumShip();
-    // pShip = new PlayerHeavyShip('W', 'A', 'D', 'S');
+    // pShip = new PlayerLightShip();
+    // pShip = new PlayerMediumShip();
+    pShip = new PlayerHeavyShip();
     
-    // pShip2 = new EnemyLightShip('I', 'J', 'L', 'K');
-    eShip = new EnemyMediumShip();
-    // pShip2 = new EnemyHeavyShip('I', 'J', 'L', 'K');
+    eShip = new EnemyLightShip();
+    // eShip = new EnemyMediumShip();
+    // eShip = new EnemyHeavyShip();
     
     gameObjects.add(pShip);
     gameObjects.add(eShip);
