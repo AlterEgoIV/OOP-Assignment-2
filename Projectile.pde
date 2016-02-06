@@ -46,7 +46,7 @@ abstract class Projectile extends GameObject
         if(dist(pos.x, pos.y, obj.pos.x, obj.pos.y) < obj.halfW)
         {
           gameObjects.remove(this);
-          //((PlayerShip)obj).health -= damage;
+          ((PlayerShip)obj).health -= damage;
         }
       }
     }

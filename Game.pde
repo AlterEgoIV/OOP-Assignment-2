@@ -29,8 +29,8 @@ class Game
     end = new EndScreen();
     
     // pShip = new PlayerLightShip();
-    // pShip = new PlayerMediumShip();
-    pShip = new PlayerHeavyShip();
+    pShip = new PlayerMediumShip();
+    // pShip = new PlayerHeavyShip();
     
     eShip = new EnemyLightShip();
     // eShip = new EnemyMediumShip();

@@ -14,24 +14,28 @@ class PlayerMediumShip extends PlayerShip
   }
   
   void fire()
-  {
-    if(keys[' '] && ammo > 0 && millis() - elapsed > game.second / 5)
+  { 
+    if(keys[' '] && ammo > 0)
     {
-      Bullet bullet = new Bullet();
+      canMove = false;
       
-      bullet.pos.x = pos.x;
-      bullet.pos.y = pos.y;
-      bullet.pos.add(PVector.mult(forward, halfW + 1));
-      bullet.theta = theta;
-      bullet.speed = speed * 3;
-      bullet.c = c;
-      bullet.playerProjectile = true;
+      Laserbeam lb = new Laserbeam();
       
-      gameObjects.add(bullet);
+      lb.pos.x = pos.x;
+      lb.pos.y = pos.y;
+      lb.pos.add(PVector.mult(forward, halfW + 1));
+      lb.theta = theta;
+      lb.speed = speed * 3;
+      lb.c = c;
+      lb.playerProjectile = true;
+      
+      gameObjects.add(lb);
       
       ammo--;
-      
-      elapsed = millis();
+    }
+    else
+    {
+      canMove = true;
     }
   }
   

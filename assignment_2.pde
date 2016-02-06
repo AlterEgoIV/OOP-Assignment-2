@@ -37,8 +37,8 @@ void draw()
       gameObjects.add(star);
     }
     
-    // Spawn AmmoDrop once every 2 seconds
-    if(frameCount % 120 == 0)
+    // Spawn AmmoDrop once every second
+    if(frameCount % 60 == 0)
     {
       GameObject ammoDrop = new AmmoDrop();
       gameObjects.add(ammoDrop);
