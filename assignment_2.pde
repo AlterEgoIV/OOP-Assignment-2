@@ -1,4 +1,4 @@
-   Game game;
+Game game;
 Screen start;
 Screen end;
 GameObject pShip, eShip;
@@ -30,21 +30,22 @@ void draw()
   }
   else
   {
+    // Draw star to screen every 3 frames
     if(frameCount % 3 == 0)
     {
       GameObject star = new Star();
       gameObjects.add(star);
     }
     
-    // Spawn AmmoDrop once every half a second
-    if(frameCount % 30 == 0)
+    // Spawn AmmoDrop once every 2 seconds
+    if(frameCount % 120 == 0)
     {
       GameObject ammoDrop = new AmmoDrop();
       gameObjects.add(ammoDrop);
     }
     
-    // Spawn Health Drop once every second
-    if(frameCount % 60 == 0)
+    // Spawn Health Drop once every 3 seconds
+    if(frameCount % 180 == 0)
     {
       GameObject healthDrop = new HealthDrop();
       gameObjects.add(healthDrop);

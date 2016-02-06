@@ -1,14 +1,14 @@
-class EnemyMediumShip extends EnemyShip
+class EnemyLightShip extends EnemyShip
 {
-  EnemyMediumShip()
+  EnemyLightShip()
   {
     pos = new PVector(width - (width / 20.0f), height - (height / 4.0f));
     forward = new PVector(-1, 0);
     theta = PI;
     c = color(255, 0, 0);
-    speed = 2.5f;
-    health = 10;
-    maxHealth = 10;
+    speed = 4.0f;
+    health = 7;
+    maxHealth = 7;
   }
   
   void fire()
@@ -42,10 +42,12 @@ class EnemyMediumShip extends EnemyShip
     pushMatrix();
     translate(pos.x, pos.y);
     rotate(theta);
-    line(-halfW, -halfW, halfW, 0); // Outside Left
-    line(-halfW, halfW, halfW, 0); // Outside Right
-    line(-halfW, -halfW, 0, 0); // Inside Left
-    line(-halfW, halfW, 0, 0); // Inside Right
+    fill(c);
+    triangle(0, -halfW / 2, 0, halfW / 2, halfW, 0); // front
+    triangle(0, -halfW / 2, 0, halfW / 2, -halfW, 0); // back
+    fill(0);
+    triangle(-halfW, 0, 0, -halfW / 2, -halfW - (halfW / 2), -halfW); // left
+    triangle(-halfW, 0, 0, halfW / 2, -halfW - (halfW / 2), halfW); // right
     popMatrix();
     
     game.healthBarWidth = map(health, 0, maxHealth, 0, game.maxHealthBarWidth);

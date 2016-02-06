@@ -4,6 +4,7 @@ class AmmoDrop extends Drop
   {
     c = color(255, 0, 0);
   }
+  
   void update()
   {
     move();
@@ -17,13 +18,25 @@ class AmmoDrop extends Drop
     {
       GameObject obj = gameObjects.get(i);
       
-      if(obj instanceof Ship)
+      if(obj instanceof PlayerShip)
       {
-        if(dist(pos.x, pos.y, ((Ship)obj).pos.x, ((Ship)obj).pos.y) < halfW + ((Ship)obj).halfW)
+        if(dist(pos.x, pos.y, ((PlayerShip)obj).pos.x, ((PlayerShip)obj).pos.y) < halfW + ((PlayerShip)obj).halfW)
         {
-          if(((Ship)obj).ammo < ((Ship)obj).maxAmmo)
+          if(((PlayerShip)obj).ammo < ((PlayerShip)obj).maxAmmo)
           {
-            ((Ship)obj).ammo++;
+            ((PlayerShip)obj).ammo += 5;
+            gameObjects.remove(this);
+          }
+        }
+      }
+      
+      if(obj instanceof EnemyShip)
+      {
+        if(dist(pos.x, pos.y, ((EnemyShip)obj).pos.x, ((EnemyShip)obj).pos.y) < halfW + ((EnemyShip)obj).halfW)
+        {
+          if(((EnemyShip)obj).ammo < ((EnemyShip)obj).maxAmmo)
+          {
+            ((EnemyShip)obj).ammo += 1;
             gameObjects.remove(this);
           }
         }

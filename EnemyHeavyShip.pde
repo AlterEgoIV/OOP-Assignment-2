@@ -1,14 +1,14 @@
-class EnemyMediumShip extends EnemyShip
+class EnemyHeavyShip extends EnemyShip
 {
-  EnemyMediumShip()
+  EnemyHeavyShip()
   {
     pos = new PVector(width - (width / 20.0f), height - (height / 4.0f));
     forward = new PVector(-1, 0);
     theta = PI;
     c = color(255, 0, 0);
-    speed = 2.5f;
-    health = 10;
-    maxHealth = 10;
+    speed = 1.0f;
+    health = 30;
+    maxHealth = 30;
   }
   
   void fire()
@@ -38,10 +38,14 @@ class EnemyMediumShip extends EnemyShip
 
   void render()
   {
+    fill(0);
     stroke(c);
     pushMatrix();
     translate(pos.x, pos.y);
     rotate(theta);
+    strokeWeight(3);
+    ellipse(0, 0, w, w);
+    strokeWeight(1);
     line(-halfW, -halfW, halfW, 0); // Outside Left
     line(-halfW, halfW, halfW, 0); // Outside Right
     line(-halfW, -halfW, 0, 0); // Inside Left

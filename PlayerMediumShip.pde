@@ -9,40 +9,8 @@ class PlayerMediumShip extends PlayerShip
     speed = 4.0f;
     health = 20;
     maxHealth = 20;
-  }
-  
-  void update()
-  {
-    checkState();
-    move();
-    fire();
-    detectCollisions();
-  }
-  
-  void move()
-  {
-    forward.x = cos(theta);
-    forward.y = sin(theta);
-    
-    if(keys[UP])
-    {
-      // forward vector is multiplied by speed and added to pos vector to get our updated position
-      pos.add(PVector.mult(forward, speed));
-      
-      wrapAround();
-    }
-        
-    if(keys[LEFT])
-    {
-      // Rotates ship to the left
-      theta -= .1f;
-    }
-        
-    if(keys[RIGHT])
-    {
-      // Rotates ship to the right
-      theta += .1f;
-    } 
+    ammo = 40;
+    maxAmmo = 40;
   }
   
   void fire()
