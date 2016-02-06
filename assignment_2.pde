@@ -1,10 +1,9 @@
-Game game;
+   Game game;
 Screen start;
 Screen end;
 GameObject pShip, eShip;
 ArrayList<GameObject> gameObjects;
 ArrayList<Float> distance = new ArrayList<Float>();
-//ArrayList<PVector> distance = new ArrayList<PVector>();
 boolean[] keys = new boolean[512];
 
 void setup()
