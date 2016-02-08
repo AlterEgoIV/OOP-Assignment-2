@@ -12,7 +12,8 @@ class SelectScreen extends Screen
   void display()
   {
     fill(255);
-    stroke(255, 255, 0);
+    strokeWeight(3);
+    stroke(0);
     
     textSize(72);
     textAlign(CENTER);
@@ -20,19 +21,19 @@ class SelectScreen extends Screen
     
     textSize(26);
     
-    fill(150, 0, 0);
-    rect(width / 10, height / 5, boxWidth, boxHeight);
     fill(255);
+    rect(width / 10, height / 5, boxWidth, boxHeight);
+    fill(0);
     text("Light Ship", (width / 10) * 1.8, (height / 5) * 1.5);
     
-    fill(150, 0, 0);
-    rect(width / 10, (height / 5) * 2, boxWidth, boxHeight);
     fill(255);
+    rect(width / 10, (height / 5) * 2, boxWidth, boxHeight);
+    fill(0);
     text("Medium Ship", (width / 10) * 1.8, ((height / 5) * 2) * 1.25);
     
-    fill(150, 0, 0);
-    rect(width / 10, (height / 5) * 3, boxWidth, boxHeight);
     fill(255);
+    rect(width / 10, (height / 5) * 3, boxWidth, boxHeight);
+    fill(0);
     text("Heavy Ship", (width / 10) * 1.8, ((height / 5) * 3) * 1.15);
   }
   
@@ -41,7 +42,7 @@ class SelectScreen extends Screen
     if(mouseX > width / 10 && mouseX < width / 10 + boxWidth && 
        mouseY > height / 5 && mouseY < height / 5 + boxHeight)
     {
-      fill(0, 0, 150);
+      fill(0);
       rect(width / 10, height / 5, boxWidth, boxHeight);
       fill(255);
       text("Light Ship", (width / 10) * 1.8, (height / 5) * 1.5);
@@ -50,7 +51,7 @@ class SelectScreen extends Screen
     if(mouseX > width / 10 && mouseX < width / 10 + boxWidth &&
        mouseY > (height / 5) * 2 && mouseY < ((height / 5) * 2) + boxHeight)
     {
-      fill(0, 0, 150);
+      fill(0);
       rect(width / 10, (height / 5) * 2, boxWidth, boxHeight);
       fill(255);
       text("Medium Ship", (width / 10) * 1.8, ((height / 5) * 2) * 1.25);
@@ -59,7 +60,7 @@ class SelectScreen extends Screen
     if(mouseX > width / 10 && mouseX < width / 10 + boxWidth &&
        mouseY > (height / 5) * 3 && mouseY < ((height / 5) * 3) + boxHeight)
     {
-      fill(0, 0, 150);
+      fill(0);
       rect(width / 10, (height / 5) * 3, boxWidth, boxHeight);
       fill(255);
       text("Heavy Ship", (width / 10) * 1.8, ((height / 5) * 3) * 1.15);

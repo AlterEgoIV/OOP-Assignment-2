@@ -11,6 +11,7 @@ class PlayerLightShip extends PlayerShip
     maxHealth = 10;
     ammo = 50;
     maxAmmo = 50;
+    isPlayer = true;
   }
   
   void fire()

@@ -4,8 +4,17 @@ class EndScreen extends Screen
   {
     fill(255);
     
-    textSize(96);
-    text("Game Over!", width / 2.0f, height / 2.0f);
+    textSize(72);
+    
+    if(((Ship)pShip).playerDied == false)
+    {
+      text("Congratulations. You Won!", width / 2.0f, height / 2.0f);
+    }
+    else
+    {
+      text("You lost. Better luck next time.", width / 2.0f, height / 2.0f);
+    }
+    
     textSize(32);
     text("Press Q to quit or P to play again.", width / 2.0f, (height / 2.0f) + (height / 10.0f));
   }

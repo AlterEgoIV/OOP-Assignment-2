@@ -4,6 +4,8 @@ abstract class Ship extends GameObject
   int maxHealth;
   int ammo;
   int maxAmmo;
+  boolean isPlayer;
+  boolean playerDied;
   
   Ship()
   {
@@ -11,6 +13,8 @@ abstract class Ship extends GameObject
     halfW = w / 2.0f;
     ammo = 20;
     maxAmmo = 20;
+    isPlayer = false;
+    playerDied = false;
   }
 
   abstract void fire();
@@ -21,6 +25,15 @@ abstract class Ship extends GameObject
     {
       gameObjects.remove(this);
       game.atEnd = true;
+      
+      if(isPlayer)
+      {
+        playerDied = true;
+      }
+      else
+      {
+        playerDied = false;
+      }
     }
   }
   
