@@ -81,22 +81,51 @@ void mousePressed()
 {
   if(game.atSelect)
   {
-    if(mouseX > width / 10 && mouseX < width / 10 + boxWidth && 
-       mouseY > height / 5 && mouseY < height / 5 + boxHeight)
+    if(mouseX > width / 10 && mouseX < width / 10 + width / 6 && 
+       mouseY > height / 5 && mouseY < height / 5 + height / 6)
     {
-
+      game.atSelect = false;
+      pShip = new PlayerLightShip();
     }
     
-    if(mouseX > width / 10 && mouseX < width / 10 + boxWidth &&
-       mouseY > (height / 5) * 2 && mouseY < ((height / 5) * 2) + boxHeight)
+    if(mouseX > width / 10 && mouseX < width / 10 + width / 6 &&
+       mouseY > (height / 5) * 2 && mouseY < ((height / 5) * 2) + height / 6)
     {
-
+      game.atSelect = false;
+      pShip = new PlayerMediumShip();
     }
     
-    if(mouseX > width / 10 && mouseX < width / 10 + boxWidth &&
-       mouseY > (height / 5) * 3 && mouseY < ((height / 5) * 3) + boxHeight)
+    if(mouseX > width / 10 && mouseX < width / 10 + width / 6 &&
+       mouseY > (height / 5) * 3 && mouseY < ((height / 5) * 3) + height / 6)
     {
-
+      game.atSelect = false;
+      pShip = new PlayerHeavyShip();
     }
+    
+    game.random = (int)random(1, 4);
+    
+    switch(game.random)
+    {
+      case 1:
+      {
+        eShip = new EnemyLightShip();
+        break;
+      }
+      
+      case 2:
+      {
+        eShip = new EnemyMediumShip();
+        break;
+      }
+      
+      case 3:
+      {
+        eShip = new EnemyHeavyShip();
+        break;
+      }
+    }
+    
+    gameObjects.add(pShip);
+    gameObjects.add(eShip);
   }
 }

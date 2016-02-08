@@ -6,7 +6,7 @@ class EnemyHeavyShip extends EnemyShip
     forward = new PVector(-1, 0);
     theta = PI;
     c = color(255, 0, 0);
-    speed = 1.0f;
+    speed = 2.0f;
     health = 30;
     maxHealth = 30;
     ammo = 30;
@@ -26,7 +26,7 @@ class EnemyHeavyShip extends EnemyShip
       eb.pos.y = pos.y;
       eb.pos.add(PVector.mult(forward, halfW + 1));
       eb.theta = theta;
-      eb.speed = speed * 8;
+      eb.speed = speed * 4;
       eb.c = c;
       eb.enemyProjectile = true;
       

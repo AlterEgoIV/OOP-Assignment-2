@@ -4,6 +4,7 @@ class Game
   boolean atSelect;
   boolean atEnd;
   int second;
+  int random;
   float healthBarWidth;
   float maxHealthBarWidth;
   float ammoBarWidth;
@@ -16,6 +17,7 @@ class Game
     atSelect = false;
     atEnd = false;
     second = 1000;
+    random = 0;
     healthBarWidth = width / 4.0f;
     maxHealthBarWidth = width / 4.0f;
     ammoBarWidth = width / 6.0f;
@@ -32,14 +34,14 @@ class Game
     end = new EndScreen();
     
     // pShip = new PlayerLightShip();
-    pShip = new PlayerMediumShip();
+    // pShip = new PlayerMediumShip();
     // pShip = new PlayerHeavyShip();
     
-    eShip = new EnemyLightShip();
+    // eShip = new EnemyLightShip();
     // eShip = new EnemyMediumShip();
     // eShip = new EnemyHeavyShip();
     
-    gameObjects.add(pShip);
-    gameObjects.add(eShip);
+    // gameObjects.add(pShip);
+    // gameObjects.add(eShip);
   }
 }

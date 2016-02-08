@@ -4,7 +4,9 @@ class EndScreen extends Screen
   {
     fill(255);
     
+    textSize(96);
     text("Game Over!", width / 2.0f, height / 2.0f);
+    textSize(32);
     text("Press Q to quit or P to play again.", width / 2.0f, (height / 2.0f) + (height / 10.0f));
   }
   
