@@ -26,7 +26,7 @@ class EnemyLightShip extends EnemyShip
       bullet.pos.y = pos.y;
       bullet.pos.add(PVector.mult(forward, halfW + 1));
       bullet.theta = theta;
-      bullet.speed = speed * 3;
+      bullet.speed = speed * 4;
       bullet.c = c;
       bullet.enemyProjectile = true;
       

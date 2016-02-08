@@ -3,6 +3,7 @@ Screen start;
 Screen select;
 Screen end;
 GameObject pShip, eShip;
+BackgroundEffect effect;
 ArrayList<GameObject> gameObjects;
 ArrayList<Float> distance = new ArrayList<Float>();
 boolean[] keys = new boolean[512];
@@ -21,16 +22,22 @@ void draw()
   
   if(game.atStart)
   {
+    effect.update();
+    effect.render();
     start.display();
     start.select();
   }
   else if(game.atSelect)
   {
+    effect.update();
+    effect.render();
     select.display();
     select.select();
   }
   else if(game.atEnd)
   {
+    effect.update();
+    effect.render();
     end.display();
     end.select();
   }
