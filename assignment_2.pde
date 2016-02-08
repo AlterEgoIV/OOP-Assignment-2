@@ -1,5 +1,6 @@
 Game game;
 Screen start;
+Screen select;
 Screen end;
 GameObject pShip, eShip;
 ArrayList<GameObject> gameObjects;
@@ -25,7 +26,8 @@ void draw()
   }
   else if(game.atSelect)
   {
-    
+    select.display();
+    select.select();
   }
   else if(game.atEnd)
   {
@@ -73,4 +75,28 @@ void keyPressed()
 void keyReleased()
 {
   keys[keyCode] = false;
+}
+
+void mousePressed()
+{
+  if(game.atSelect)
+  {
+    if(mouseX > width / 10 && mouseX < width / 10 + boxWidth && 
+       mouseY > height / 5 && mouseY < height / 5 + boxHeight)
+    {
+
+    }
+    
+    if(mouseX > width / 10 && mouseX < width / 10 + boxWidth &&
+       mouseY > (height / 5) * 2 && mouseY < ((height / 5) * 2) + boxHeight)
+    {
+
+    }
+    
+    if(mouseX > width / 10 && mouseX < width / 10 + boxWidth &&
+       mouseY > (height / 5) * 3 && mouseY < ((height / 5) * 3) + boxHeight)
+    {
+
+    }
+  }
 }

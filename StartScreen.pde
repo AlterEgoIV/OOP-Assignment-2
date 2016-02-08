@@ -17,6 +17,7 @@ class StartScreen extends Screen
     if(keys[ENTER] || keys[RETURN])
     {
       game.atStart = false;
+      game.atSelect = true;
     }
   }
 }
