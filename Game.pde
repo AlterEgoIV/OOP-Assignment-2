@@ -1,6 +1,7 @@
 class Game
 {
   boolean atStart;
+  boolean atSelect;
   boolean atEnd;
   int second;
   float healthBarWidth;
@@ -12,6 +13,7 @@ class Game
   Game()
   {
     atStart = true;
+    atSelect = false;
     atEnd = false;
     second = 1000;
     healthBarWidth = width / 4.0f;
@@ -33,8 +35,8 @@ class Game
     // pShip = new PlayerHeavyShip();
     
     eShip = new EnemyLightShip();
-    // eShip = new EnemyMediumShip();
-    // eShip = new EnemyHeavyShip();
+    eShip = new EnemyMediumShip();
+    eShip = new EnemyHeavyShip();
     
     gameObjects.add(pShip);
     gameObjects.add(eShip);

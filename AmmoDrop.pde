@@ -24,7 +24,7 @@ class AmmoDrop extends Drop
         {
           if(((PlayerShip)obj).ammo < ((PlayerShip)obj).maxAmmo)
           {
-            ((PlayerShip)obj).ammo += 5;
+            ((PlayerShip)obj).ammo += 20;
             gameObjects.remove(this);
           }
         }
@@ -36,7 +36,7 @@ class AmmoDrop extends Drop
         {
           if(((EnemyShip)obj).ammo < ((EnemyShip)obj).maxAmmo)
           {
-            ((EnemyShip)obj).ammo += 1;
+            ((EnemyShip)obj).ammo += 5;
             gameObjects.remove(this);
           }
         }

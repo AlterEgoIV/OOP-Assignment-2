@@ -23,6 +23,10 @@ void draw()
     start.display();
     start.select();
   }
+  else if(game.atSelect)
+  {
+    
+  }
   else if(game.atEnd)
   {
     end.display();

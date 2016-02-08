@@ -9,7 +9,7 @@ class StartScreen extends Screen
     text("SpaceWars", width / 2.0f, height / 2.0f);
     
     textSize(32);
-    text("Press SPACE BAR to begin", width / 2.0f, (height / 2.0f) + (height / 10.0f));
+    text("Press RETURN / ENTER to begin", width / 2.0f, (height / 2.0f) + (height / 10.0f));
   }
   
   void select()

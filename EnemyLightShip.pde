@@ -7,8 +7,10 @@ class EnemyLightShip extends EnemyShip
     theta = PI;
     c = color(255, 0, 0);
     speed = 4.0f;
-    health = 7;
-    maxHealth = 7;
+    health = 10;
+    maxHealth = 10;
+    ammo = 20;
+    maxAmmo = 20;
   }
   
   void fire()

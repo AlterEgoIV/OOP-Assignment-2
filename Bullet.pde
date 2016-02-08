@@ -3,7 +3,7 @@ class Bullet extends Projectile
   Bullet()
   {
     damage = 1;
-    w = 5.0f;
+    w = 10.0f;
     halfW = w / 2.0f;
   }
   

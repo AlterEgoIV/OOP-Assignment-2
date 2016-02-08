@@ -9,6 +9,8 @@ class EnemyHeavyShip extends EnemyShip
     speed = 1.0f;
     health = 30;
     maxHealth = 30;
+    ammo = 30;
+    maxAmmo = 30;
   }
   
   void fire()
@@ -24,9 +26,9 @@ class EnemyHeavyShip extends EnemyShip
       eb.pos.y = pos.y;
       eb.pos.add(PVector.mult(forward, halfW + 1));
       eb.theta = theta;
-      eb.speed = speed * 5;
+      eb.speed = speed * 8;
       eb.c = c;
-      eb.playerProjectile = true;
+      eb.enemyProjectile = true;
       
       gameObjects.add(eb);
       
