@@ -12,7 +12,7 @@ class SelectScreen implements Screen
   void display()
   {
     fill(255);
-    strokeWeight(3);
+    // strokeWeight(3);
     stroke(0);
     
     textSize(72);

@@ -71,5 +71,7 @@ class BackgroundEffect
     // Middle top to middle bottom
     line(0, -height, 0, height);
     popMatrix();
+    
+    strokeWeight(1);
   }
 }

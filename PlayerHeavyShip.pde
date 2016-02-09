@@ -43,7 +43,7 @@ class PlayerHeavyShip extends PlayerShip
     pushMatrix();
     translate(pos.x, pos.y);
     rotate(theta);
-    strokeWeight(3);
+    strokeWeight(2);
     ellipse(0, 0, w, w);
     strokeWeight(1);
     line(-halfW, -halfW, halfW + 5, 0); // Outside Left

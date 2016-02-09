@@ -64,9 +64,15 @@ void draw()
     {
       GameObject obj = gameObjects.get(i);
       
-      obj.update();
+      if(game.time > 120)
+      {
+        obj.update();
+      }
+      
       obj.render();
     }
+    
+    game.time++;
   }
 }
 
