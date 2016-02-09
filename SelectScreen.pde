@@ -1,4 +1,4 @@
-class SelectScreen extends Screen
+class SelectScreen implements Screen
 {
   float boxWidth;
   float boxHeight;

@@ -2,7 +2,7 @@ class Star extends GameObject
 {
   Star()
   {
-    pos = new PVector(0, random(0, height));
+    pos = new PVector(random(0, width), random(0, height));
     speed = 5.0f;
   }
   

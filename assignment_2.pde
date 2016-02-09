@@ -43,12 +43,8 @@ void draw()
   }
   else
   {
-    // Draw star to screen every 3 frames
-    if(frameCount % 3 == 0)
-    {
-      GameObject star = new Star();
-      gameObjects.add(star);
-    }
+    GameObject star = new Star();
+    gameObjects.add(star);
     
     // Spawn AmmoDrop once every second
     if(frameCount % 60 == 0)
@@ -57,8 +53,8 @@ void draw()
       gameObjects.add(ammoDrop);
     }
     
-    // Spawn Health Drop once every 3 seconds
-    if(frameCount % 180 == 0)
+    // Spawn Health Drop once every second
+    if(frameCount % 60 == 0)
     {
       GameObject healthDrop = new HealthDrop();
       gameObjects.add(healthDrop);

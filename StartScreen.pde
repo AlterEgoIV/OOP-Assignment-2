@@ -1,4 +1,4 @@
-class StartScreen extends Screen
+class StartScreen implements Screen
 {
   void display()
   {

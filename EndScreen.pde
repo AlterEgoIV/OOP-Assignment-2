@@ -1,4 +1,4 @@
-class EndScreen extends Screen
+class EndScreen implements Screen
 {
   void display()
   {

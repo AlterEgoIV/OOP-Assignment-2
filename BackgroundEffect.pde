@@ -37,6 +37,11 @@ class BackgroundEffect
     {
       smallRadius = 0;
     }
+    
+    if(frameCount % 60 == 0)
+    {
+      c = color(random(0, 256), random(0, 256), random(0, 256));
+    }
   }
   
   void render()

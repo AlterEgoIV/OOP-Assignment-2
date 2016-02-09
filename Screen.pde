@@ -1,5 +1,5 @@
-abstract class Screen
+interface Screen
 {
-  abstract void display();
-  abstract void select();
+  void display();
+  void select();
 }
