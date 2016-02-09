@@ -5,6 +5,8 @@ class EndScreen implements Screen
     fill(255);
     
     textSize(72);
+
+    ouroboros.pause();
     
     if(((Ship)pShip).playerDied == false)
     {

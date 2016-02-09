@@ -1,3 +1,18 @@
+/*
+Music Credits:
+
+"Voice Over Under" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 3.0 License
+http://creativecommons.org/licenses/by/3.0/
+
+"Ouroboros" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 3.0 License
+http://creativecommons.org/licenses/by/3.0/
+*/
+
+import ddf.minim.*;
+Minim minim;
+AudioPlayer ouroboros, vou;
 Game game;
 Screen start;
 Screen select;
@@ -12,6 +27,11 @@ void setup()
 {
   size(1200, 800);
   
+  minim = new Minim(this);
+  
+  ouroboros = minim.loadFile("Ouroboros.mp3");
+  vou = minim.loadFile("Voice Over Under.mp3");
+  
   game = new Game();
   game.setupGame();
 }
@@ -22,6 +42,12 @@ void draw()
   
   if(game.atStart)
   {
+    if(!vou.isPlaying())
+    {
+      vou.rewind();
+      vou.play();
+    }
+    
     effect.update();
     effect.render();
     start.display();
@@ -29,6 +55,12 @@ void draw()
   }
   else if(game.atSelect)
   {
+    if(!vou.isPlaying())
+    {
+      vou.rewind();
+      vou.play();
+    }
+    
     effect.update();
     effect.render();
     select.display();
@@ -36,6 +68,12 @@ void draw()
   }
   else if(game.atEnd)
   {
+    if(!vou.isPlaying())
+    {
+      vou.rewind();
+      vou.play();
+    }
+    
     effect.update();
     effect.render();
     end.display();
@@ -43,21 +81,24 @@ void draw()
   }
   else
   {
-    GameObject star = new Star();
-    gameObjects.add(star);
+    vou.pause();
     
-    // Spawn AmmoDrop once every second
-    if(frameCount % 60 == 0)
+    if(!ouroboros.isPlaying())
     {
-      GameObject ammoDrop = new AmmoDrop();
-      gameObjects.add(ammoDrop);
+      ouroboros.rewind();
+      ouroboros.play();
     }
     
-    // Spawn Health Drop once every second
+    GameObject star = new Star();
+    gameObjects.add(star);
+
+    // Spawn Drop once every second
     if(frameCount % 60 == 0)
     {
       GameObject healthDrop = new HealthDrop();
       gameObjects.add(healthDrop);
+      GameObject ammoDrop = new AmmoDrop();
+      gameObjects.add(ammoDrop);
     }
     
     for(int i = gameObjects.size() - 1; i >= 0; --i)
