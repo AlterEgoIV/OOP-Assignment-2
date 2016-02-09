@@ -7,8 +7,8 @@ class PlayerMediumShip extends PlayerShip
     theta = radians(0.0f);
     c = color(0, 190, 255);
     speed = 4.0f;
-    health = 20;
-    maxHealth = 20;
+    health = 25;
+    maxHealth = 25;
     ammo = 50;
     maxAmmo = 50;
     isPlayer = true;

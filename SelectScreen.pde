@@ -35,6 +35,16 @@ class SelectScreen implements Screen
     rect(width / 10, (height / 5) * 3, boxWidth, boxHeight);
     fill(0);
     text("Heavy Ship", (width / 10) * 1.8, ((height / 5) * 3) * 1.15);
+    
+    fill(255);
+    textSize(40);
+    text("Controls", (width / 3) * 2, height / 3);
+    textSize(26);
+    text("Up: Up Arrow Key", (width / 3) * 2, (height / 3) + (height / 20));
+    text("Left: Left Arrow Key", (width / 3) * 2, (height / 3) + ((height / 20) * 2));
+    text("Right: Right Arrow Key", (width / 3) * 2, (height / 3) + ((height / 20) * 3));
+    text("Fire: Space Bar", (width / 3) * 2, (height / 3) + ((height / 20) * 4));
+    textSize(26);
   }
   
   void select()

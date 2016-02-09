@@ -7,10 +7,10 @@ class EnemyLightShip extends EnemyShip
     theta = PI;
     c = color(255, 0, 0);
     speed = 4.0f;
-    health = 10;
-    maxHealth = 10;
-    ammo = 20;
-    maxAmmo = 20;
+    health = 15;
+    maxHealth = 15;
+    ammo = 30;
+    maxAmmo = 30;
   }
   
   void fire()
@@ -18,7 +18,7 @@ class EnemyLightShip extends EnemyShip
     forward.x = cos(theta);
     forward.y = sin(theta);
     
-    if(ammo > 0 && millis() - elapsed > game.second / 5)
+    if(ammo > 0 && millis() - elapsed > game.second / 10)
     {
       Bullet bullet = new Bullet();
       

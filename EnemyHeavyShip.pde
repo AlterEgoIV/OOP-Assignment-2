@@ -18,7 +18,7 @@ class EnemyHeavyShip extends EnemyShip
     forward.x = cos(theta);
     forward.y = sin(theta);
     
-    if(ammo >= 5 && millis() - elapsed > game.second)
+    if(ammo >= 5 && millis() - elapsed > game.second / 2)
     {
       Energyball eb = new Energyball();
       
@@ -26,7 +26,7 @@ class EnemyHeavyShip extends EnemyShip
       eb.pos.y = pos.y;
       eb.pos.add(PVector.mult(forward, halfW + 1));
       eb.theta = theta;
-      eb.speed = speed * 4;
+      eb.speed = speed * 6;
       eb.c = c;
       eb.enemyProjectile = true;
       

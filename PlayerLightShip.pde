@@ -7,16 +7,16 @@ class PlayerLightShip extends PlayerShip
     theta = radians(0.0f);
     c = color(0, 190, 255);  
     speed = 6.0f;
-    health = 10;
-    maxHealth = 10;
-    ammo = 50;
-    maxAmmo = 50;
+    health = 15;
+    maxHealth = 15;
+    ammo = 75;
+    maxAmmo = 75;
     isPlayer = true;
   }
   
   void fire()
   {
-    if(keys[' '] && ammo > 0 && millis() - elapsed > game.second / 5)
+    if(keys[' '] && ammo > 0 && millis() - elapsed > game.second / 10)
     {
       Bullet bullet = new Bullet();
       

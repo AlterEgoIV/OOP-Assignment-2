@@ -7,16 +7,16 @@ class PlayerHeavyShip extends PlayerShip
     theta = radians(0.0f);
     c = color(0, 190, 255);
     speed = 2.0f;
-    health = 30;
-    maxHealth = 30;
-    ammo = 30;
-    maxAmmo = 30;
+    health = 40;
+    maxHealth = 40;
+    ammo = 40;
+    maxAmmo = 40;
     isPlayer = true;
   }
   
   void fire()
   {
-    if(keys[' '] && ammo >= 5 && millis() - elapsed > game.second)
+    if(keys[' '] && ammo >= 5 && millis() - elapsed > game.second / 2)
     {
       Energyball eb = new Energyball();
       
@@ -24,7 +24,7 @@ class PlayerHeavyShip extends PlayerShip
       eb.pos.y = pos.y;
       eb.pos.add(PVector.mult(forward, halfW + 1));
       eb.theta = theta;
-      eb.speed = speed * 6;
+      eb.speed = speed * 8;
       eb.c = c;
       eb.playerProjectile = true;
       

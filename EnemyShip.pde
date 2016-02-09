@@ -24,6 +24,7 @@ abstract class EnemyShip extends Ship
     checkIfEvading();
     
     chooseAction();
+    wrapAround();
   }
   
   void checkForHealth()
@@ -138,8 +139,6 @@ abstract class EnemyShip extends Ship
          (health <= maxHealth / 3 && !healthDropAvailable))
       {
         pos.add(PVector.mult(forward, speed));
-        
-        wrapAround();
       }
       else
       {
@@ -157,8 +156,6 @@ abstract class EnemyShip extends Ship
   
       // forward vector is multiplied by speed and added to pos vector to get our updated position
       pos.add(PVector.mult(forward, speed));
-        
-      wrapAround();
     }
   }
   

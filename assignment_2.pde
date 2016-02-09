@@ -21,7 +21,7 @@ GameObject pShip, eShip;
 BackgroundEffect effect;
 ArrayList<GameObject> gameObjects;
 ArrayList<Float> distance = new ArrayList<Float>();
-boolean[] keys = new boolean[512];
+boolean[] keys = new boolean[1024];
 
 void setup()
 {
@@ -105,12 +105,15 @@ void draw()
     {
       GameObject obj = gameObjects.get(i);
       
-      if(game.time > 120)
+      if(obj != null)
       {
-        obj.update();
+        if(game.time > 120)
+        {
+          obj.update();
+        }
+        
+        obj.render();
       }
-      
-      obj.render();
     }
     
     game.time++;

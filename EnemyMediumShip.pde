@@ -6,11 +6,11 @@ class EnemyMediumShip extends EnemyShip
     forward = new PVector(-1, 0);
     theta = PI;
     c = color(255, 0, 0);
-    speed = 2.5f;
+    speed = 3.0f;
     health = 20;
     maxHealth = 20;
-    ammo = 40;
-    maxAmmo = 40;
+    ammo = 50;
+    maxAmmo = 50;
   }
   
   void fire()

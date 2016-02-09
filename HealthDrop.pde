@@ -18,13 +18,37 @@ class HealthDrop extends Drop
     {
       GameObject obj = gameObjects.get(i);
       
-      if(obj instanceof Ship)
+      if(obj instanceof PlayerShip)
       {
-        if(dist(pos.x, pos.y, ((Ship)obj).pos.x, ((Ship)obj).pos.y) < halfW + ((Ship)obj).halfW)
+        if(dist(pos.x, pos.y, ((PlayerShip)obj).pos.x, ((PlayerShip)obj).pos.y) < halfW + ((PlayerShip)obj).halfW)
         {
-          if(((Ship)obj).health < ((Ship)obj).maxHealth)
+          if(((PlayerShip)obj).health < ((PlayerShip)obj).maxHealth)
           {
-            ((Ship)obj).health++;
+            ((PlayerShip)obj).health += 7;
+            
+            if(((PlayerShip)obj).health > ((PlayerShip)obj).maxHealth)
+            {
+              ((PlayerShip)obj).health = ((PlayerShip)obj).maxHealth;
+            }
+            
+            gameObjects.remove(this);
+          }
+        }
+      }
+      
+      if(obj instanceof EnemyShip)
+      {
+        if(dist(pos.x, pos.y, ((EnemyShip)obj).pos.x, ((EnemyShip)obj).pos.y) < halfW + ((EnemyShip)obj).halfW)
+        {
+          if(((EnemyShip)obj).health < ((EnemyShip)obj).maxHealth)
+          {
+            ((EnemyShip)obj).health += 3;
+            
+            if(((EnemyShip)obj).health > ((EnemyShip)obj).maxHealth)
+            {
+              ((EnemyShip)obj).health = ((EnemyShip)obj).maxHealth;
+            }
+            
             gameObjects.remove(this);
           }
         }
