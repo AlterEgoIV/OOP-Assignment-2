@@ -27,6 +27,7 @@ abstract class EnemyShip extends Ship
     wrapAround();
   }
   
+  // Algorithm to determine if there are any health drops available
   void checkForHealth()
   {
     healthDropAvailable = false;
@@ -42,6 +43,7 @@ abstract class EnemyShip extends Ship
     }
   }
   
+  // Algorithm to determine if there are any ammo drops available
   void checkForAmmo()
   {
     ammoDropAvailable = false;
@@ -57,6 +59,7 @@ abstract class EnemyShip extends Ship
     }
   }
   
+  // Determines whether or not to search for ammo
   void checkIfSearchingForAmmo()
   {
     if(ammo <= 0)
@@ -70,6 +73,7 @@ abstract class EnemyShip extends Ship
     }
   }
   
+  // Determines whether or not to evade
   void checkIfEvading()
   {
     if(!evading)
@@ -79,6 +83,7 @@ abstract class EnemyShip extends Ship
       {
         evading = true;
         
+        // Set a random direction to move
         forward.x = random(-1, 1);
         forward.y = random(-1, 1);
         forward.normalize();
@@ -86,6 +91,7 @@ abstract class EnemyShip extends Ship
     }
   }
   
+  // Main AI branches
   void chooseAction()
   {
     orientate();
@@ -97,6 +103,7 @@ abstract class EnemyShip extends Ship
     evade();
   }
   
+  // Makes enemy point towards player
   void orientate()
   {
     if(health >= maxHealth / 3)
@@ -105,6 +112,7 @@ abstract class EnemyShip extends Ship
     }
   }
   
+  // Makes enemy search for drops
   void sustain()
   {
     if(healthDropAvailable && health <= maxHealth / 3)
@@ -118,6 +126,7 @@ abstract class EnemyShip extends Ship
     }
   }
   
+  // Makes enemy move towards and attack player
   void attack()
   {
     if(dist(pos.x, pos.y, pShip.pos.x, pShip.pos.y) >= width / 4 && health >= maxHealth / 3 && !searchingForAmmo)
@@ -131,6 +140,7 @@ abstract class EnemyShip extends Ship
     }
   }
   
+  // Makes enemy evade
   void evade()
   {
     if(evading)
@@ -159,10 +169,15 @@ abstract class EnemyShip extends Ship
     }
   }
   
+  // Algorithm to determine the health drop the shortest distance away from the enemy
   void goToHealth()
   {
     float min;
     
+    /*
+      Get all of the distances from the enemy to all of the 
+      different health drops and add them to the distance ArrayList.
+    */
     for(int i = gameObjects.size() - 1; i >= 0; --i)
     {
       GameObject obj = gameObjects.get(i);
@@ -175,6 +190,7 @@ abstract class EnemyShip extends Ship
     
     min = width;
     
+    // Set min to the shortest distance
     for(int i = 0; i < distance.size(); ++i)
     {
       if(distance.get(i) < min)
@@ -183,6 +199,10 @@ abstract class EnemyShip extends Ship
       }
     }
     
+    /*
+      Search for the distance that matches min and rotate and 
+      move towards the health drop with that distance.
+    */
     for(int i = gameObjects.size() - 1; i >= 0; --i)
     {
       GameObject obj = gameObjects.get(i);
@@ -198,16 +218,22 @@ abstract class EnemyShip extends Ship
 
           pos.add(PVector.mult(forward, speed));
           
+          // Clear the distance ArrayList
           distance = new ArrayList<Float>();
         }
       }
     }
   }
   
+  // Algorithm to determine the ammo drop the shortest distance away from the enemy
   void goToAmmo()
   {
     float min;
     
+    /*
+      Get all of the distances from the enemy to all of the 
+      different ammo drops and add them to the distance ArrayList.
+    */
     for(int i = gameObjects.size() - 1; i >= 0; --i)
     {
       GameObject obj = gameObjects.get(i);
@@ -220,6 +246,7 @@ abstract class EnemyShip extends Ship
     
     min = width;
     
+    // Set min to the shortest distance
     for(int i = 0; i < distance.size(); ++i)
     {
       if(distance.get(i) < min)
@@ -228,6 +255,10 @@ abstract class EnemyShip extends Ship
       }
     }
     
+    /*
+      Search for the distance that matches min and rotate and 
+      move towards the ammo drop with that distance.
+    */
     for(int i = gameObjects.size() - 1; i >= 0; --i)
     {
       GameObject obj = gameObjects.get(i);

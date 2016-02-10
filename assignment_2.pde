@@ -92,8 +92,8 @@ void draw()
     GameObject star = new Star();
     gameObjects.add(star);
 
-    // Spawn Drop once every second
-    if(frameCount % 60 == 0)
+    // Spawn Drop once every 2 seconds
+    if(frameCount % 120 == 0)
     {
       GameObject healthDrop = new HealthDrop();
       gameObjects.add(healthDrop);
